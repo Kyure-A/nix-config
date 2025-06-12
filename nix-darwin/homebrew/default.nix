@@ -10,6 +10,7 @@
     brews = [
       "docker-compose"
       "pinentry-mac"
+      "tectonic"
     ];
 
     casks = [
@@ -21,7 +22,6 @@
       "firefox"
       "postman"
       "raycast"
-      "tectonic"
       "unity-hub"
       "warp"
     ];
