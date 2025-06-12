@@ -21,6 +21,7 @@
       "firefox"
       "postman"
       "raycast"
+      "tectonic"
       "unity-hub"
       "warp"
     ];
