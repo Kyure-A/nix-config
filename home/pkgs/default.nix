@@ -5,6 +5,7 @@ let
     aider-chat
     baobab
     bun
+    claude-code
     delta
     deno
     dotnet-sdk # C#
