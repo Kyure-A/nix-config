@@ -23,6 +23,7 @@
       "postman"
       "raycast"
       "unity-hub"
+      "visual-studio-code"
       "warp"
     ];
 
