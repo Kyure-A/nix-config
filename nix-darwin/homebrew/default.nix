@@ -18,6 +18,7 @@
       "alcom"
       "chatgpt"
       "claude"
+      "crossover"
       "docker"
       "firefox"
       "postman"
