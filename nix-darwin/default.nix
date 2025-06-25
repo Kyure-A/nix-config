@@ -5,6 +5,8 @@ let
   homebrew = import ./homebrew;
 in
 {
+  system.primaryUser = "kyre";
+  
   imports = [
     homebrew
   ];
