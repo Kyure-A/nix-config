@@ -1,1 +1,1 @@
-["@github/copilot-language-server", "@mariozechner/claude-bridge"]
+["@github/copilot-language-server", "@mariozechner/claude-bridge", "@google/gemini-cli"]
