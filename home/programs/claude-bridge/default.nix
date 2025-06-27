@@ -1,4 +1,4 @@
 { pkgs, node2nix }:
 {
-  home.package = [ node2nix."@mariozechner/claude-bridge" ];
+  home.packages = [ node2nix."@mariozechner/claude-bridge" ];
 }
