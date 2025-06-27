@@ -20,6 +20,7 @@
       "claude"
       "crossover"
       "docker"
+      "docker-desktop"
       "firefox"
       "postman"
       "raycast"
