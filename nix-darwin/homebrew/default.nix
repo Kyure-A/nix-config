@@ -15,7 +15,7 @@
 
     casks = [
       "alacritty"
-      "alcom"
+      "alcom" # VRChat Project manager
       "chatgpt"
       "claude"
       "crossover"
@@ -26,7 +26,6 @@
       "raycast"
       "unity-hub"
       "visual-studio-code"
-      "warp"
     ];
 
     masApps = {
