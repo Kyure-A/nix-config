@@ -34,7 +34,7 @@ jobs:
           extra-conf: |
             experimental-features = nix-command flakes
       
-      - name: Test NixOS WSL command
+      - name: Test NixOS WSL configuration build
         run: |
           nix build .#nixosConfigurations.wsl.config.system.build.toplevel --show-trace
 
