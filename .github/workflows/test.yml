@@ -21,7 +21,7 @@ jobs:
       
       - name: Test nix-darwin command
         run: |
-          nix run nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake .#darwin --show-trace --dry-run
+          sudo nix run nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake .#darwin --show-trace --dry-run
 
   test-nixos-wsl:
     runs-on: ubuntu-latest
