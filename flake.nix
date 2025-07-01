@@ -81,14 +81,15 @@
               overlays
               emacs-d
             ;
+          })
+          // (import ./hosts/x230 {
+            inherit
+              self
+              nixpkgs
+              home-manager
+              overlays
+              emacs-d
+            ;
           });
-        # // (import ./hosts/x230 {
-        #   inherit
-        #     self
-        #     nixpkgs
-        #     home-manager
-        #     emacs-config
-        #   ;
-        # });
       };
 }
