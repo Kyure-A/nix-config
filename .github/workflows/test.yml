@@ -8,8 +8,27 @@ on:
   workflow_dispatch:
 
 jobs:
-  test-darwin:
-    runs-on: macos-latest
+  nix-eval:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: darwin
+            os: macos-latest
+            target: darwinConfigurations.darwin
+            command: "sudo nix run nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake .#darwin --show-trace --dry-run"
+          - name: wsl
+            os: ubuntu-latest
+            target: nixosConfigurations.wsl.config.system.build.toplevel
+            command: "nix eval .#nixosConfigurations.wsl.config.system.build.toplevel --show-trace"
+          - name: x230
+            os: ubuntu-latest
+            target: nixosConfigurations.x230.config.system.build.toplevel
+            command: "nix eval .#nixosConfigurations.x230.config.system.build.toplevel --show-trace"
+    
+    runs-on: ${{ matrix.os }}
+    name: Evaluate ${{ matrix.name }}
+    
     steps:
       - uses: actions/checkout@v4
       
@@ -19,12 +38,19 @@ jobs:
           extra-conf: |
             experimental-features = nix-command flakes
       
-      - name: Test nix-darwin command
-        run: |
-          sudo nix run nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake .#darwin --show-trace --dry-run
+      - name: Setup Cachix
+        uses: cachix/cachix-action@v14
+        with:
+          name: kyure-a-nix-config  # Change this to your cache name
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      
+      - name: Evaluate ${{ matrix.name }} configuration
+        run: ${{ matrix.command }}
 
-  test-nixos-wsl:
+  lightweight-tests:
     runs-on: ubuntu-latest
+    name: Format and node2nix tests
+    
     steps:
       - uses: actions/checkout@v4
       
@@ -34,52 +60,17 @@ jobs:
           extra-conf: |
             experimental-features = nix-command flakes
       
-      - name: Test NixOS WSL configuration build
-        run: |
-          nix build .#nixosConfigurations.wsl.config.system.build.toplevel --show-trace
-
-  test-nixos-x230:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@main
+      - name: Setup Cachix
+        uses: cachix/cachix-action@v14
         with:
-          extra-conf: |
-            experimental-features = nix-command flakes
-      
-      - name: Test NixOS X230 command
-        run: |
-          nix build .#nixosConfigurations.x230.config.system.build.toplevel --show-trace
-
-  test-node2nix:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@main
-        with:
-          extra-conf: |
-            experimental-features = nix-command flakes
-      
-      - name: Test node2nix command
-        run: |
-          cd node2nix
-          nix-shell -p nodePackages.node2nix --command "node2nix -i ./node2nix.json -o packages.nix"
-
-  test-format:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@main
-        with:
-          extra-conf: |
-            experimental-features = nix-command flakes
+          name: kyure-a-nix-config  # Change this to your cache name
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       
       - name: Test nix fmt
         run: |
           nix fmt ./ -- --check
+      
+      - name: Test node2nix
+        run: |
+          cd node2nix
+          nix-shell -p nodePackages.node2nix --command "node2nix -i ./node2nix.json -o packages.nix"
