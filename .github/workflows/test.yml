@@ -1,0 +1,78 @@
+name: Test Nix Commands
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  nix-eval:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: darwin
+            os: macos-latest
+            target: darwinConfigurations.darwin
+            command: "nix build .#darwinConfigurations.darwin.config.system.build.toplevel --show-trace"
+          - name: wsl
+            os: ubuntu-latest
+            target: nixosConfigurations.wsl.config.system.build.toplevel
+            command: "nix build .#nixosConfigurations.wsl.config.system.build.toplevel --show-trace"
+          - name: x230
+            os: ubuntu-latest
+            target: nixosConfigurations.x230.config.system.build.toplevel
+            command: "nix build .#nixosConfigurations.x230.config.system.build.toplevel --show-trace"
+    
+    runs-on: ${{ matrix.os }}
+    name: Evaluate ${{ matrix.name }}
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+        with:
+          extra-conf: |
+            experimental-features = nix-command flakes
+      
+      - name: Setup Cachix
+        uses: cachix/cachix-action@v15
+        with:
+          name: kyre
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          pushFailureFallback: ignore
+      
+      - name: Evaluate ${{ matrix.name }} configuration
+        run: ${{ matrix.command }}
+
+  lightweight-tests:
+    runs-on: ubuntu-latest
+    name: Format and node2nix tests
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+        with:
+          extra-conf: |
+            experimental-features = nix-command flakes
+      
+      - name: Setup Cachix
+        uses: cachix/cachix-action@v15
+        with:
+          name: kyre
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          pushFailureFallback: ignore
+      
+      - name: Test nix fmt
+        run: |
+          nix fmt ./ -- --check
+      
+      - name: Test node2nix
+        run: |
+          cd node2nix
+          nix-shell -p nodePackages.node2nix --command "node2nix -i ./node2nix.json -o packages.nix"
