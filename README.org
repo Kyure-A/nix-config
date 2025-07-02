@@ -6,7 +6,7 @@
 ** Systems
 *** MacBook Air (M4)
 #+begin_src shell
-  nix run nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake .#darwin --show-trace
+  sudo nix run nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake .#darwin --show-trace
 #+end_src
 
 *** Windows Subsystem for Linux
