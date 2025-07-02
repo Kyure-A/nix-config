@@ -41,7 +41,7 @@ jobs:
       - name: Setup Cachix
         uses: cachix/cachix-action@v14
         with:
-          name: kyure-a-nix-config  # Change this to your cache name
+          name: kyre
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       
       - name: Evaluate ${{ matrix.name }} configuration
@@ -63,7 +63,7 @@ jobs:
       - name: Setup Cachix
         uses: cachix/cachix-action@v14
         with:
-          name: kyure-a-nix-config  # Change this to your cache name
+          name: kyre
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       
       - name: Test nix fmt
