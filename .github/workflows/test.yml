@@ -39,10 +39,11 @@ jobs:
             experimental-features = nix-command flakes
       
       - name: Setup Cachix
-        uses: cachix/cachix-action@v14
+        uses: cachix/cachix-action@v15
         with:
           name: kyre
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          pushFailureFallback: ignore
       
       - name: Evaluate ${{ matrix.name }} configuration
         run: ${{ matrix.command }}
@@ -61,10 +62,11 @@ jobs:
             experimental-features = nix-command flakes
       
       - name: Setup Cachix
-        uses: cachix/cachix-action@v14
+        uses: cachix/cachix-action@v15
         with:
           name: kyre
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          pushFailureFallback: ignore
       
       - name: Test nix fmt
         run: |
