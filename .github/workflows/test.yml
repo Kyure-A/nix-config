@@ -16,7 +16,9 @@ jobs:
           - name: darwin
             os: macos-latest
             target: darwinConfigurations.darwin
-            command: "sudo nix run nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake .#darwin --show-trace --dry-run"
+            command: |
+              sudo nix run nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake .#darwin --show-trace --dry-run
+              echo "Exit code: $?"
           - name: wsl
             os: ubuntu-latest
             target: nixosConfigurations.wsl.config.system.build.toplevel
