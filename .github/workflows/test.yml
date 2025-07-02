@@ -22,11 +22,11 @@ jobs:
           - name: wsl
             os: ubuntu-latest
             target: nixosConfigurations.wsl.config.system.build.toplevel
-            command: "nix eval .#nixosConfigurations.wsl.config.system.build.toplevel --show-trace"
+            command: "sudo nixos-rebuild switch --flake .#wsl --show-trace"
           - name: x230
             os: ubuntu-latest
             target: nixosConfigurations.x230.config.system.build.toplevel
-            command: "nix eval .#nixosConfigurations.x230.config.system.build.toplevel --show-trace"
+            command: "sudo nixos-rebuild switch --flake .#x230 --show-trace"
     
     runs-on: ${{ matrix.os }}
     name: Evaluate ${{ matrix.name }}
