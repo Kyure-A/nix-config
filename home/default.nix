@@ -3,7 +3,7 @@
   nixpkgs,
   overlays,
   emacs-d,
-  emacs-config
+  emacs-config,
 }:
 let
   pkgs = import nixpkgs {
@@ -12,7 +12,7 @@ let
   };
 
   node2nix = pkgs.callPackage ../node2nix { inherit pkgs; };
-  
+
   programs = import ./programs { inherit pkgs emacs-config node2nix; };
 in
 {

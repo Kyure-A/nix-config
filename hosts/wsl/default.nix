@@ -4,7 +4,7 @@
   home-manager,
   nixos-wsl,
   overlays,
-  emacs-d
+  emacs-d,
 }:
 let
   username = "kyre";
@@ -27,7 +27,7 @@ in
             overlays
             emacs-d
             emacs-config
-          ;
+            ;
         };
       }
     ];

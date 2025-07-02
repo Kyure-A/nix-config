@@ -3,7 +3,7 @@
   nixpkgs,
   home-manager,
   overlays,
-  emacs-d
+  emacs-d,
 }:
 let
   username = "kyre";
@@ -26,7 +26,7 @@ in
             overlays
             emacs-d
             emacs-config
-          ;
+            ;
         };
       }
     ];

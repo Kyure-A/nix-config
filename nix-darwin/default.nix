@@ -6,11 +6,11 @@ let
 in
 {
   system.primaryUser = "kyre";
-  
+
   imports = [
     homebrew
   ];
-  
+
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
   ];

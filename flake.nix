@@ -14,7 +14,7 @@
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
-    };    
+    };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,7 +44,7 @@
     }:
     let
       karabiner-elements = (import ./overlays/karabiner-elements.nix);
-      
+
       overlays = [
         karabiner-elements
         rust-overlay.overlays.default
@@ -52,44 +52,44 @@
         rustowl-flake.overlays.default
       ];
     in
-      {
-        formatter = {
-          x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
-          aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
-        };
-
-        darwinConfigurations = (
-          import ./hosts/darwin {
-            inherit
-              self
-              nixpkgs
-              home-manager
-              nix-darwin
-              overlays
-              emacs-d
-            ;
-          }
-        );
-
-        nixosConfigurations =
-          (import ./hosts/wsl {
-            inherit
-              self
-              nixpkgs
-              home-manager
-              nixos-wsl
-              overlays
-              emacs-d
-            ;
-          })
-          // (import ./hosts/x230 {
-            inherit
-              self
-              nixpkgs
-              home-manager
-              overlays
-              emacs-d
-            ;
-          });
+    {
+      formatter = {
+        x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+        aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
       };
+
+      darwinConfigurations = (
+        import ./hosts/darwin {
+          inherit
+            self
+            nixpkgs
+            home-manager
+            nix-darwin
+            overlays
+            emacs-d
+            ;
+        }
+      );
+
+      nixosConfigurations =
+        (import ./hosts/wsl {
+          inherit
+            self
+            nixpkgs
+            home-manager
+            nixos-wsl
+            overlays
+            emacs-d
+            ;
+        })
+        // (import ./hosts/x230 {
+          inherit
+            self
+            nixpkgs
+            home-manager
+            overlays
+            emacs-d
+            ;
+        });
+    };
 }

@@ -111,7 +111,6 @@
     pulseaudio.enable = false;
   };
 
-
   users.users.kyre = {
     isNormalUser = true;
     extraGroups = [

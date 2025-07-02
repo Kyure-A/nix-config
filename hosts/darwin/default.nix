@@ -33,7 +33,7 @@ in
             overlays
             emacs-d
             emacs-config
-          ;
+            ;
         };
       }
     ];

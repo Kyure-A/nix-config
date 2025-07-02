@@ -37,8 +37,15 @@ let
     web-ext # mozilla
     zsh-defer
   ];
-  
-  nonDarwin = if !stdenv.isDarwin then [ pinentry-all docker ] else [ ];
+
+  nonDarwin =
+    if !stdenv.isDarwin then
+      [
+        pinentry-all
+        docker
+      ]
+    else
+      [ ];
   darwin =
     if stdenv.isDarwin then
       [
