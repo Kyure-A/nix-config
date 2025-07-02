@@ -111,7 +111,6 @@
     pulseaudio.enable = false;
   };
 
-  sound.enable = true;
 
   users.users.kyre = {
     isNormalUser = true;
