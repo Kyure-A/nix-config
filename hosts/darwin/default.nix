@@ -22,7 +22,7 @@ in
     specialArgs = { inherit username; };
     modules = [
       configuration
-      ../../nix-darwin
+      ../../modules/darwin
       home-manager.darwinModules.home-manager
       {
         home-manager.useUserPackages = true;
