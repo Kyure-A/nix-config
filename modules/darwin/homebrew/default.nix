@@ -19,6 +19,7 @@
       "chatgpt"
       "claude"
       "crossover"
+      "dbvisualizer"
       "docker"
       "firefox"
       "orbstack"
