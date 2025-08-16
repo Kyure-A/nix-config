@@ -24,6 +24,7 @@ let
     nodePackages.typescript-language-server
     ollama
     omnisharp-roslyn # C#
+    online-judge-tools
     openssl
     ripgrep
     rust-bin.stable.latest.default
