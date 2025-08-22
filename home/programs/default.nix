@@ -14,6 +14,7 @@ let
   karabiner = import ./karabiner;
   sheldon = import ./sheldon;
   starship = import ./starship;
+  tmux = import ./tmux { inherit pkgs; };
   zsh = import ./zsh { inherit pkgs; };
   common = [
     ccusage
@@ -24,6 +25,7 @@ let
     git
     sheldon
     starship
+    tmux
     zsh
   ];
   darwin =

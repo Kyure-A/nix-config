@@ -39,6 +39,9 @@
       set -g status-style bg=black,fg=white
       set -g status-left '#[fg=green]#S '
       set -g status-right '#[fg=yellow]%Y-%m-%d %H:%M'
+ 
+      # Set base index for windows and panes
+      set-option -g base-index 1
     '';
   };
 }
