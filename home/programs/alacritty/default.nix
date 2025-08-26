@@ -12,7 +12,7 @@
           y = 16;
         };
         opacity = 0.95;
-        decorations = "buttonless";
+        # decorations = "buttonless";
       };
 
       font = {
