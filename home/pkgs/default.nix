@@ -6,6 +6,7 @@ let
     baobab
     bun
     claude-code
+    codex
     delta
     deno
     dotnet-sdk # C#
@@ -17,7 +18,7 @@ let
     gnumake
     gnupg
     keybase
-    neofetch
+    fastfetch
     nixd
     nixpkgs-fmt
     nodejs_22
