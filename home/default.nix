@@ -7,7 +7,7 @@
 }:
 let
   pkgs = import nixpkgs {
-    inherit system overlays;
+    inherit system overlays node2nix;
     config.allowUnfree = true;
   };
 

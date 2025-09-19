@@ -13,9 +13,9 @@ let
   ];
 in
 {
-  home.file = {
-    ".zshrc".source = pkgs.writeText ".zshrc" text;
-  };
+  # home.file = {
+  #   ".zshrc".source = pkgs.writeText ".zshrc" text;
+  # };
   programs.zsh = {
     enable = true;
   };
