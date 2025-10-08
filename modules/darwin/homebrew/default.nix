@@ -15,7 +15,7 @@
 
     casks = [
       "alacritty"
-      "alcom" # VRChat Project manager
+      "alcom"
       "chatgpt"
       "claude"
       "crossover"
@@ -25,6 +25,8 @@
       "orbstack"
       "postman"
       "raycast"
+      "reaper"
+      "rekordbox"
       "unity-hub"
       "visual-studio-code"
     ];
