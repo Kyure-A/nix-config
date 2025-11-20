@@ -1,6 +1,8 @@
 { pkgs }:
 with pkgs;
 let
+  targets.darwin.copyApps.enable = true;
+  
   common = [
     aider-chat
     baobab
@@ -50,7 +52,6 @@ let
   darwin =
     if stdenv.isDarwin then
       [
-        warp-terminal
         karabiner-elements
       ]
     else
