@@ -15,8 +15,6 @@
     casks = [
       "alacritty"
       "alcom"
-      "chatgpt"
-      "claude"
       "crossover"
       "firefox"
       "lm-studio"
