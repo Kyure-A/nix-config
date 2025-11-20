@@ -4,7 +4,7 @@ let
   targets.darwin.copyApps.enable = true;
   
   common = [
-    aider-chat
+    #aider-chat
     bun
     claude-code
     codex
@@ -25,7 +25,7 @@ let
     nixpkgs-fmt
     nodejs_22
     nodePackages.typescript-language-server
-    ollama
+    #ollama
     # omnisharp-roslyn # C#
     online-judge-tools
     openssl
