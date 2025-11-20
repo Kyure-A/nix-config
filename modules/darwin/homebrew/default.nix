@@ -8,7 +8,6 @@
     };
 
     brews = [
-      "docker-compose"
       "pinentry-mac"
     ];
 

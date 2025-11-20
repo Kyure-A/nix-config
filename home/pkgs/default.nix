@@ -11,6 +11,7 @@ let
     codex
     delta
     deno
+    docker-compose
     # dotnet-sdk # C#
     emacs-lsp-booster
     eza
