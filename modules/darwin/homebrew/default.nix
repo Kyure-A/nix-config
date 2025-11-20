@@ -10,7 +10,7 @@
     brews = [
       "docker-compose"
       "pinentry-mac"
-      "tectonic"
+      # "tectonic"
     ];
 
     casks = [

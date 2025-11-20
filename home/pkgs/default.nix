@@ -31,7 +31,7 @@ let
     rust-bin.stable.latest.default
     rust-analyzer
     satysfi
-    # tectonic
+    tectonic
     tmux
     tree-sitter
     vscode
