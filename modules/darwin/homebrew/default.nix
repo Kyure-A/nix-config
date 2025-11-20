@@ -10,7 +10,6 @@
     brews = [
       "docker-compose"
       "pinentry-mac"
-      # "tectonic"
     ];
 
     casks = [
@@ -19,7 +18,6 @@
       "chatgpt"
       "claude"
       "crossover"
-      "dbvisualizer"
       "firefox"
       "lm-studio"
       "orbstack"
@@ -28,7 +26,6 @@
       "reaper"
       "rekordbox"
       "unity-hub"
-      "visual-studio-code"
     ];
 
     masApps = {
