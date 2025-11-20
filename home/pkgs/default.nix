@@ -9,7 +9,7 @@ let
     codex
     delta
     deno
-    dotnet-sdk # C#
+    # dotnet-sdk # C#
     emacs-lsp-booster
     eza
     gcc
@@ -24,7 +24,7 @@ let
     nodejs_22
     nodePackages.typescript-language-server
     ollama
-    omnisharp-roslyn # C#
+    # omnisharp-roslyn # C#
     online-judge-tools
     openssl
     ripgrep
