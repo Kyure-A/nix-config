@@ -5,7 +5,6 @@ let
   
   common = [
     aider-chat
-    baobab
     bun
     claude-code
     codex
