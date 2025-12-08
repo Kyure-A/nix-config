@@ -29,6 +29,7 @@ let
     # omnisharp-roslyn # C#
     online-judge-tools
     openssl
+    rana # nostr key miner
     ripgrep
     rust-bin.stable.latest.default
     rust-analyzer
