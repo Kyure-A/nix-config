@@ -14,7 +14,6 @@ let
     {
       users.users.${username}.home = "/Users/${username}";
     };
-  emacs-config = emacs-d.packages.${system}.default;
 in
 {
   darwin = nix-darwin.lib.darwinSystem {
@@ -31,8 +30,7 @@ in
             system
             nixpkgs
             overlays
-            emacs-d
-            emacs-config;
+            emacs-d;
         };
       }
     ];

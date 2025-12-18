@@ -1,15 +1,13 @@
 {
   pkgs,
-  emacs-config,
   node2nix,
-  earlyInitEl,
 }:
 let
   alacritty = import ./alacritty;
   ccusage = import ./ccusage { inherit pkgs node2nix; };
   claude-bridge = import ./claude-bridge { inherit pkgs node2nix; };
   copilot-language-server = import ./copilot-language-server { inherit pkgs node2nix; };
-  emacs-twist = import ./emacs-twist { inherit emacs-config earlyInitEl; };
+  emacs-twist = import ./emacs-twist;
   gemini-cli = import ./gemini-cli { inherit pkgs node2nix; };
   git = import ./git { inherit pkgs; };
   karabiner = import ./karabiner;

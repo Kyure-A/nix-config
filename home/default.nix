@@ -3,12 +3,8 @@
   nixpkgs,
   overlays,
   emacs-d,
-  emacs-config,
-  earlyInitEl ? emacs-d.earlyInitEl.${system},
 }:
 let
-  earlyInitElPath =
-    if builtins.isAttrs earlyInitEl && builtins.hasAttr system earlyInitEl then earlyInitEl.${system} else earlyInitEl;
   pkgs = import nixpkgs {
     inherit system overlays node2nix;
     config.allowUnfree = true;
@@ -16,10 +12,7 @@ let
 
   node2nix = pkgs.callPackage ../node2nix { inherit pkgs; };
 
-  programs = import ./programs {
-    inherit pkgs emacs-config node2nix;
-    earlyInitEl = earlyInitElPath;
-  };
+  programs = import ./programs { inherit pkgs node2nix; };
 in
 {
   imports = programs ++ [ emacs-d.homeModules.${system}.twist ];

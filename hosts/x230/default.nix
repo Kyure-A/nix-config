@@ -8,7 +8,6 @@
 let
   username = "kyre";
   system = "x86_64-linux";
-  emacs-config = emacs-d.packages.${system}.default;
 in
 {
   x230 = nixpkgs.lib.nixosSystem {
@@ -25,7 +24,6 @@ in
             nixpkgs
             overlays
             emacs-d
-            emacs-config
             ;
         };
       }
