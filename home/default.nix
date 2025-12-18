@@ -4,6 +4,7 @@
   overlays,
   emacs-d,
   emacs-config,
+  earlyInitEl,
 }:
 let
   pkgs = import nixpkgs {
@@ -13,7 +14,7 @@ let
 
   node2nix = pkgs.callPackage ../node2nix { inherit pkgs; };
 
-  programs = import ./programs { inherit pkgs emacs-config node2nix; };
+  programs = import ./programs { inherit pkgs emacs-config node2nix earlyInitEl; };
 in
 {
   imports = programs ++ [ emacs-d.homeModules.${system}.twist ];

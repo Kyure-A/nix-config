@@ -15,6 +15,7 @@ let
       users.users.${username}.home = "/Users/${username}";
     };
   emacs-config = emacs-d.packages.${system}.default;
+  earlyInitEl = emacs-d.earlyInitEl;
 in
 {
   darwin = nix-darwin.lib.darwinSystem {
@@ -33,7 +34,7 @@ in
             overlays
             emacs-d
             emacs-config
-            ;
+            earlyInitEl;
         };
       }
     ];
