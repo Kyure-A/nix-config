@@ -56,6 +56,22 @@
         "type": "github"
       }
     },
+    "my-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1766495222,
+        "narHash": "sha256-BaA+3/I7BusCx2Nf0xHJu0rd/Vo6C+XUHqgpfXnOG+w=",
+        "owner": "Kyure-A",
+        "repo": "skills",
+        "rev": "fedab2890c3221422173ba90fbdb583f68a326fd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kyure-A",
+        "repo": "skills",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1766309749,
@@ -75,7 +91,8 @@
     "root": {
       "inputs": {
         "agent-skills": "agent-skills",
-        "anthropic-skills": "anthropic-skills"
+        "anthropic-skills": "anthropic-skills",
+        "my-skills": "my-skills"
       }
     }
   },

@@ -1,4 +1,4 @@
-{ lib, agent-skills, anthropic-skills, ... }:
+{ lib, agent-skills, anthropic-skills, my-skills, ... }:
 {
   imports = [
     (import "${agent-skills.outPath}/modules/home-manager/agent-skills.nix" {
@@ -9,11 +9,16 @@
 
   programs.agent-skills = {
     enable = true;
-    sources.anthropic = {
-      path = anthropic-skills;
-      subdir = "skills";
+    sources = {
+      anthropic = {
+        path = anthropic-skills;
+        subdir = "skills";
+      };
+      personal = {
+        path = my-skills;
+      };
     };
-    skills.enable = [ "frontend-design" "skill-creator" ];
+    skills.enableAll = [ "anthropic" "personal" ];
     targets = {
       codex  = { dest = ".codex/skills";  structure = "copy-tree"; };
       claude = { dest = ".claude/skills"; structure = "copy-tree"; };

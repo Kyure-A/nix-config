@@ -341,6 +341,22 @@
         "type": "github"
       }
     },
+    "my-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1766495222,
+        "narHash": "sha256-BaA+3/I7BusCx2Nf0xHJu0rd/Vo6C+XUHqgpfXnOG+w=",
+        "owner": "Kyure-A",
+        "repo": "skills",
+        "rev": "fedab2890c3221422173ba90fbdb583f68a326fd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kyure-A",
+        "repo": "skills",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -431,11 +447,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1766488420,
-        "narHash": "sha256-LKXjnPG2883iVgsxHyt4qvAHDEjClGgsJnXDYUzcUBY=",
+        "lastModified": 1766491707,
+        "narHash": "sha256-8ILBMTB3tU4etacU9JcmUtO+gDoWE4TmhlK+hSyy/zk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "1329c5271e0606536ef0c7b73b32417756a4ae07",
+        "rev": "d222d01cd2ea050af63ae3ac1e151e9b0f7f6aac",
         "type": "github"
       },
       "original": {
@@ -632,7 +648,8 @@
     "skills-config": {
       "inputs": {
         "agent-skills": "agent-skills",
-        "anthropic-skills": "anthropic-skills"
+        "anthropic-skills": "anthropic-skills",
+        "my-skills": "my-skills"
       },
       "locked": {
         "path": "./skills",
