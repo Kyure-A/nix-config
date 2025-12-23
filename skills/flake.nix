@@ -7,11 +7,15 @@
       url = "github:anthropics/skills";
       flake = false;
     };
+    my-skills = {
+      url = "github:Kyure-A/skills";
+      flake = false;
+    };
   };
 
-  outputs = { self, agent-skills, anthropic-skills, ... }:
+  outputs = { self, agent-skills, anthropic-skills, my-skills, ... }:
     {
       homeManagerModules.default = { ... }@args:
-        import ./default.nix (args // { inherit agent-skills anthropic-skills; });
+        import ./default.nix (args // { inherit agent-skills anthropic-skills my-skills; });
     };
 }
