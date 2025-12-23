@@ -11,7 +11,7 @@
 
   outputs = { self, agent-skills, anthropic-skills, ... }:
     {
-      homeManagerModules.default =
-        import ./default.nix { inherit agent-skills anthropic-skills; };
+      homeManagerModules.default = { ... }@args:
+        import ./default.nix (args // { inherit agent-skills anthropic-skills; });
     };
 }
