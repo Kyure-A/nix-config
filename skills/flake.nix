@@ -2,12 +2,13 @@
   description = "Agent Skills";
 
   inputs = {
+    agent-skills.url = "github:Kyure-A/agent-skills-nix";
     anthropic-skills.url = "github:anthropics/skills";
   };
 
-  outputs = { self, anthropic-skills, ... }:
+  outputs = { self, agent-skills, anthropic-skills, ... }:
     {
       homeManagerModules.default =
-        import ./home-manager.nix { inherit anthropic-skills; };
+        import ./default.nix { inherit agent-skills anthropic-skills; };
     };
 }

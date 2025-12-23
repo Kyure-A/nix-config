@@ -24,6 +24,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rustowl-flake.url = "github:mrcjkb/rustowl-flake";
+    skills-config.url = "path:./skills";
     emacs-d = {
       url = "github:Kyure-A/.emacs.d";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,6 +41,7 @@
       fenix,
       rustowl-flake,
       nix-darwin,
+      skills-config,
       emacs-d,
     }:
     let
@@ -67,6 +69,7 @@
             nix-darwin
             overlays
             emacs-d
+            skills-config
             ;
         }
       );
@@ -80,6 +83,7 @@
             nixos-wsl
             overlays
             emacs-d
+            skills-config
             ;
         })
         // (import ./hosts/x230 {
@@ -89,6 +93,7 @@
             home-manager
             overlays
             emacs-d
+            skills-config
             ;
         });
     };

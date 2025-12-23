@@ -4,6 +4,7 @@
   home-manager,
   nix-darwin,
   overlays,
+  skills-config,
   emacs-d,
 }:
 let
@@ -31,6 +32,7 @@ in
             nixpkgs
             overlays
             emacs-d;
+          inputs = { inherit skills-config; };
         };
       }
     ];

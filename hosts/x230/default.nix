@@ -3,6 +3,7 @@
   nixpkgs,
   home-manager,
   overlays,
+  skills-config,
   emacs-d,
 }:
 let
@@ -25,6 +26,7 @@ in
             overlays
             emacs-d
             ;
+          inputs = { inherit skills-config; };
         };
       }
     ];

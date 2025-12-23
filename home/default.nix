@@ -2,6 +2,7 @@
   system,
   nixpkgs,
   overlays,
+  inputs,
   emacs-d,
 }:
 let
@@ -12,10 +13,13 @@ let
 
   node2nix = pkgs.callPackage ../node2nix { inherit pkgs; };
 
-  programs = import ./programs { inherit pkgs node2nix; };
+  programs = import ./programs { inherit pkgs node2nix inputs; };
 in
 {
-  imports = programs ++ [ emacs-d.homeModules.${system}.twist ];
+  imports = programs ++ [
+    emacs-d.homeModules.${system}.twist
+    inputs.skills-config.homeManagerModules.default
+  ];
   home.packages = import ./pkgs { inherit pkgs; };
 
   home.stateVersion = "25.05";

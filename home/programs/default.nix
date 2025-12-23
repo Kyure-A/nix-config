@@ -1,6 +1,7 @@
 {
   pkgs,
   node2nix,
+  inputs,
 }:
 let
   alacritty = import ./alacritty;
