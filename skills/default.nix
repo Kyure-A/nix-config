@@ -1,9 +1,15 @@
-{ lib, agent-skills, anthropic-skills, my-skills, ... }:
+{
+  lib,
+  agent-skills,
+  anthropic-skills,
+  my-skills,
+  ...
+}:
 {
   imports = [
     (import "${agent-skills.outPath}/modules/home-manager/agent-skills.nix" {
       inherit lib;
-      inputs = {};
+      inputs = { };
     })
   ];
 
@@ -18,11 +24,20 @@
         path = my-skills;
       };
     };
-    skills.enable = [ "frontend-design" "skill-creator" ];
+    skills.enable = [
+      "frontend-design"
+      "skill-creator"
+    ];
     skills.enableAll = [ "personal" ];
     targets = {
-      codex  = { dest = ".codex/skills";  structure = "copy-tree"; };
-      claude = { dest = ".claude/skills"; structure = "copy-tree"; };
+      codex = {
+        dest = ".codex/skills";
+        structure = "copy-tree";
+      };
+      claude = {
+        dest = ".claude/skills";
+        structure = "copy-tree";
+      };
     };
   };
 }

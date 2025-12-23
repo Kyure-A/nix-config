@@ -2,7 +2,7 @@
 with pkgs;
 let
   targets.darwin.copyApps.enable = true;
-  
+
   common = [
     #aider-chat
     bun

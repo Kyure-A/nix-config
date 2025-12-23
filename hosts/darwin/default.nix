@@ -31,7 +31,8 @@ in
             system
             nixpkgs
             overlays
-            emacs-d;
+            emacs-d
+            ;
           inputs = { inherit skills-config; };
         };
       }

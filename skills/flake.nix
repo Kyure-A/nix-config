@@ -13,9 +13,16 @@
     };
   };
 
-  outputs = { self, agent-skills, anthropic-skills, my-skills, ... }:
+  outputs =
     {
-      homeManagerModules.default = { ... }@args:
-        import ./default.nix (args // { inherit agent-skills anthropic-skills my-skills; });
+      self,
+      agent-skills,
+      anthropic-skills,
+      my-skills,
+      ...
+    }:
+    {
+      homeManagerModules.default =
+        { ... }@args: import ./default.nix (args // { inherit agent-skills anthropic-skills my-skills; });
     };
 }
