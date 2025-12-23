@@ -18,7 +18,8 @@
         path = my-skills;
       };
     };
-    skills.enableAll = [ "anthropic" "personal" ];
+    skills.enable = [ "frontend-design" "skill-creator" ];
+    skills.enableAll = [ "personal" ];
     targets = {
       codex  = { dest = ".codex/skills";  structure = "copy-tree"; };
       claude = { dest = ".claude/skills"; structure = "copy-tree"; };
