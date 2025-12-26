@@ -6,11 +6,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1766496441,
-        "narHash": "sha256-3TyCEzRMnPkSGx2qsVZgDhreHbkcBvA80udHzG72I8s=",
+        "lastModified": 1766729803,
+        "narHash": "sha256-6IwXRgTrG3UCTbzaI69s2x9sq+/Rv/yFR1tyfZlUlik=",
         "owner": "Kyure-A",
         "repo": "agent-skills-nix",
-        "rev": "f2797e0f06a9a6d18665f4b6197450b72d5940d8",
+        "rev": "37f781cb40a393a29bd3d6f2e8bf2c220bbbd8d8",
         "type": "github"
       },
       "original": {
@@ -59,11 +59,11 @@
     "my-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1766497779,
-        "narHash": "sha256-8bsHaMKab0sbI/wCniXU3og6iVJptaQikb4k/u+w62Q=",
+        "lastModified": 1766736918,
+        "narHash": "sha256-ly5I8JDeqVUIgb5jp2q+IZXTne/kbFWLWSYzkgb79/4=",
         "owner": "Kyure-A",
         "repo": "skills",
-        "rev": "e2dc57476476fb1269494e2a1b2c5633785730da",
+        "rev": "32461bed0ac47a66c801a1e00f5e8e1e49153543",
         "type": "github"
       },
       "original": {
