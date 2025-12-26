@@ -29,7 +29,6 @@
       "pdf"
       "pptx"
       "skill-creator"
-      "xlsx"
     ];
     skills.enableAll = [ "personal" ];
     targets = {
