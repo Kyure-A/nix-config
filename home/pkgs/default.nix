@@ -13,6 +13,7 @@ let
     docker-compose
     eza
     gcc
+    gemini-cli
     ghq
     glance
     gnumake
