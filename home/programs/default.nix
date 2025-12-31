@@ -9,7 +9,6 @@ let
   claude-bridge = import ./claude-bridge { inherit pkgs node2nix; };
   copilot-language-server = import ./copilot-language-server { inherit pkgs node2nix; };
   emacs-twist = import ./emacs-twist;
-  gemini-cli = import ./gemini-cli { inherit pkgs node2nix; };
   git = import ./git { inherit pkgs; };
   karabiner = import ./karabiner;
   sheldon = import ./sheldon;
@@ -21,7 +20,6 @@ let
     claude-bridge
     copilot-language-server
     emacs-twist
-    gemini-cli
     git
     sheldon
     starship
