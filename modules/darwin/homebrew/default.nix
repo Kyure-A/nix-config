@@ -22,10 +22,12 @@
       "raycast"
       "reaper"
       "rekordbox"
+      "rustdesk"
       "unity-hub"
     ];
 
     masApps = {
+      Amphetamine = 937984704;
       DaisyDisk = 411643860;
       GoodNotes = 1444383602;
       Runcat = 1429033973;
