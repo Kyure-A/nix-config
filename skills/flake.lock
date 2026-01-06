@@ -6,11 +6,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1766741127,
-        "narHash": "sha256-4k7WY+UKjznfRGNxHBeOwiUpWrTmeNo8pJATekl2Lac=",
+        "lastModified": 1766765277,
+        "narHash": "sha256-e4JVVxW8rWBUrAQkj2YUdvxWnvPqdt97oiMEsDmdVgA=",
         "owner": "Kyure-A",
         "repo": "agent-skills-nix",
-        "rev": "22b4626d6afda4f39a836344b750de6a9ff9e253",
+        "rev": "6ab41f33f909d718b41fcd2c5d89f4f1c210d24c",
         "type": "github"
       },
       "original": {

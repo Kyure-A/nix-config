@@ -26,7 +26,7 @@
     rustowl-flake.url = "github:mrcjkb/rustowl-flake";
     skills-config.url = "path:./skills";
     emacs-d = {
-      url = "github:Kyure-A/.emacs.d";
+      url = "github:Kyure-A/.emacs.d/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
