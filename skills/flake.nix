@@ -7,6 +7,10 @@
       url = "github:anthropics/skills";
       flake = false;
     };
+    vercel-skills = {
+      url = "github:vercel-labs/agent-skills";
+      flake = false;
+    };
     my-skills = {
       url = "github:Kyure-A/skills";
       flake = false;
@@ -18,6 +22,7 @@
       self,
       agent-skills,
       anthropic-skills,
+      vercel-skills,
       my-skills,
       ...
     }:

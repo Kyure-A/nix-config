@@ -3,6 +3,7 @@
   agent-skills,
   anthropic-skills,
   my-skills,
+  vercel-skills,
   ...
 }:
 {
@@ -23,12 +24,17 @@
       personal = {
         path = my-skills;
       };
+      vercel = {
+        path = vercel-skills;
+        subdir = "skills";
+      };
     };
     skills.enable = [
       "frontend-design"
       "pdf"
       "pptx"
       "skill-creator"
+      "react-best-practices"
     ];
     skills.enableAll = [ "personal" ];
     targets = {
