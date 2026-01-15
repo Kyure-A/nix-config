@@ -28,6 +28,6 @@
     }:
     {
       homeManagerModules.default =
-        { ... }@args: import ./default.nix (args // { inherit agent-skills anthropic-skills my-skills; });
+        { ... }@args: import ./default.nix (args // { inherit agent-skills anthropic-skills vercel-skills my-skills; });
     };
 }

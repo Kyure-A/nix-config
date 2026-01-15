@@ -2,8 +2,8 @@
   lib,
   agent-skills,
   anthropic-skills,
-  my-skills,
   vercel-skills,
+  my-skills,
   ...
 }:
 {
