@@ -24,6 +24,7 @@ let
     nodejs_22
     #ollama
     online-judge-tools
+    opencode
     openssl
     ripgrep
     rust-bin.stable.latest.default
