@@ -34,7 +34,6 @@
       "pdf"
       "pptx"
       "skill-creator"
-      "react-best-practices"
     ];
     skills.enableAll = [ "personal" ];
     targets = {

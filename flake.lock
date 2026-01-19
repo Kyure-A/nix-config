@@ -6,11 +6,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1766765277,
-        "narHash": "sha256-e4JVVxW8rWBUrAQkj2YUdvxWnvPqdt97oiMEsDmdVgA=",
+        "lastModified": 1767105052,
+        "narHash": "sha256-nzeEIvgWseoKZ2Ep8nssNYAO0kmtOfhsIvo9Dz5cb68=",
         "owner": "Kyure-A",
         "repo": "agent-skills-nix",
-        "rev": "6ab41f33f909d718b41fcd2c5d89f4f1c210d24c",
+        "rev": "318e2dd549f57ab1f506abd38f39ce4fc81b673e",
         "type": "github"
       },
       "original": {
@@ -103,11 +103,11 @@
         "twist": "twist"
       },
       "locked": {
-        "lastModified": 1767518696,
-        "narHash": "sha256-VpHpePEm+wlN51DN2UQGP3WUw3NUEuSSfN/vnHt0mOM=",
+        "lastModified": 1768663190,
+        "narHash": "sha256-4Y3dIKqEJ4oMXS9fVDfQymzCxQwxeIdBNmXqfhZvO6g=",
         "owner": "Kyure-A",
         "repo": ".emacs.d",
-        "rev": "15de616fb2c338ddf6de25cf55e9e02f7c2b5a4a",
+        "rev": "472111a632eb8b25d9878a2e5c8e1c73b62a7069",
         "type": "github"
       },
       "original": {
@@ -529,13 +529,13 @@
       "locked": {
         "lastModified": 1731256202,
         "narHash": "sha256-xtV0vIUhl3ZUzaUIHSaiWpybxyCgQ9Yp/MUGo3f5zvM=",
-        "owner": "emacs-twist",
+        "owner": "Kyure-A",
         "repo": "org-babel",
         "rev": "a5d16c54aca35c07af59d216cda598163512db42",
         "type": "github"
       },
       "original": {
-        "owner": "emacs-twist",
+        "owner": "Kyure-A",
         "repo": "org-babel",
         "type": "github"
       }
@@ -650,7 +650,8 @@
       "inputs": {
         "agent-skills": "agent-skills",
         "anthropic-skills": "anthropic-skills",
-        "my-skills": "my-skills"
+        "my-skills": "my-skills",
+        "vercel-skills": "vercel-skills"
       },
       "locked": {
         "path": "./skills",
@@ -682,16 +683,32 @@
         "elisp-helpers": "elisp-helpers"
       },
       "locked": {
-        "lastModified": 1759460592,
-        "narHash": "sha256-HpX25DafWkANa5IMM7lnzewP7lnvRNVeNnCjST8HhkA=",
-        "owner": "emacs-twist",
+        "lastModified": 1767245636,
+        "narHash": "sha256-JIHRt5IOrQTYvb2FCXAs3iu2rDW+dY8XQpfePJgNK9Y=",
+        "owner": "Kyure-A",
         "repo": "twist.nix",
-        "rev": "4ec7d75f0c5a2133bfdf69c0e55a142935ae3898",
+        "rev": "975398b1abfb970b07c01dc6035fd2554370ef45",
         "type": "github"
       },
       "original": {
-        "owner": "emacs-twist",
+        "owner": "Kyure-A",
         "repo": "twist.nix",
+        "type": "github"
+      }
+    },
+    "vercel-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768431880,
+        "narHash": "sha256-YaTit3eYaElOBPi4qEyaFXKpeIFesK6w1dRKXOD0TiU=",
+        "owner": "vercel-labs",
+        "repo": "agent-skills",
+        "rev": "73912c327187754099d42e56d9a2938baf298f6b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vercel-labs",
+        "repo": "agent-skills",
         "type": "github"
       }
     }
