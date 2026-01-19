@@ -36,20 +36,27 @@ let
     zsh-defer
   ];
 
-  nonDarwin =
-    if !stdenv.isDarwin then
-      [
-        pinentry-all
-        docker
-      ]
-    else
-      [ ];
-  darwin =
-    if stdenv.isDarwin then
-      [
-        karabiner-elements
-      ]
-    else
-      [ ];
+  nonDarwin = [
+    pinentry-all
+    docker
+  ];
+
+  brew = with pkgs.brewCasks; [
+    alacritty
+    alcom
+    crossover
+    ghostty
+    orbstack
+    postman
+    raycast
+    reaper
+    rekordbox
+    rustdesk
+    unity-hub
+  ];
+  
+  darwin = [
+    karabiner-elements
+  ];
 in
-common ++ nonDarwin ++ darwin
+common ++ lib.optionals (!stdenv.isDarwin) nonDarwin ++ lib.optionals stdenv.isDarwin darwin

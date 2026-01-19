@@ -29,6 +29,13 @@
       url = "github:Kyure-A/.emacs.d/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    brew-nix = {
+      url = "github:BatteredBunny/brew-nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nix-darwin.follows = "nix-darwin";
+      };
+    };
   };
 
   outputs =
@@ -43,11 +50,13 @@
       nix-darwin,
       skills-config,
       emacs-d,
+      brew-nix,
     }:
     let
       karabiner-elements = (import ./overlays/karabiner-elements.nix);
 
       overlays = [
+        brew-nix.overlays.default
         karabiner-elements
         rust-overlay.overlays.default
         fenix.overlays.default

@@ -12,18 +12,8 @@
     ];
 
     casks = [
-      "alacritty"
-      "alcom"
-      "crossover"
       "firefox"
       "lm-studio"
-      "orbstack"
-      "postman"
-      "raycast"
-      "reaper"
-      "rekordbox"
-      "rustdesk"
-      "unity-hub"
     ];
 
     masApps = {
