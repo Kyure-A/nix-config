@@ -32,9 +32,14 @@
     brew-nix = {
       url = "github:BatteredBunny/brew-nix";
       inputs = {
+        brew-api.follows = "brew-api";
         nixpkgs.follows = "nixpkgs";
         nix-darwin.follows = "nix-darwin";
       };
+    };
+    brew-api = {
+      url = "github:BatteredBunny/brew-api";
+      flake = false;
     };
   };
 
@@ -51,15 +56,18 @@
       skills-config,
       emacs-d,
       brew-nix,
+      brew-api, # なぜか入れないと動かない
     }:
     let
       karabiner-elements = (import ./overlays/karabiner-elements.nix);
       unity-hub = (import ./overlays/unity-hub.nix);
-
+      # rekordbox = (import ./overlays/rekordbox.nix);
+      
       overlays = [
         brew-nix.overlays.default
         karabiner-elements
         unity-hub
+        # rekordbox
         rust-overlay.overlays.default
         fenix.overlays.default
         rustowl-flake.overlays.default
@@ -81,7 +89,7 @@
             overlays
             emacs-d
             skills-config
-            ;
+          ;
         }
       );
 
@@ -95,7 +103,7 @@
             overlays
             emacs-d
             skills-config
-            ;
+          ;
         })
         // (import ./hosts/x230 {
           inherit
