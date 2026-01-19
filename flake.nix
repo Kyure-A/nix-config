@@ -54,10 +54,12 @@
     }:
     let
       karabiner-elements = (import ./overlays/karabiner-elements.nix);
+      unity-hub = (import ./overlays/unity-hub.nix);
 
       overlays = [
         brew-nix.overlays.default
         karabiner-elements
+        unity-hub
         rust-overlay.overlays.default
         fenix.overlays.default
         rustowl-flake.overlays.default

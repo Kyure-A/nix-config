@@ -57,6 +57,6 @@ let
   
   darwin = [
     karabiner-elements
-  ];
+  ] ++ brew;
 in
 common ++ lib.optionals (!stdenv.isDarwin) nonDarwin ++ lib.optionals stdenv.isDarwin darwin
