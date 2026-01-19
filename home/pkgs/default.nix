@@ -1,8 +1,6 @@
 { pkgs }:
 with pkgs;
 let
-  targets.darwin.copyApps.enable = true;
-
   common = [
     #aider-chat
     bun
@@ -41,7 +39,7 @@ let
     docker
   ];
 
-  brew = with pkgs.brewCasks; [
+  homebrew = with pkgs.brewCasks; [
     alacritty
     alcom
     crossover
@@ -50,13 +48,14 @@ let
     postman
     raycast
     reaper
-    rekordbox
+    # rekordbox
     rustdesk
-    unity-hub
+    # unity-hub
   ];
   
   darwin = [
     karabiner-elements
-  ] ++ brew;
+    pinentry-mac
+  ] ++ homebrew;
 in
 common ++ lib.optionals (!stdenv.isDarwin) nonDarwin ++ lib.optionals stdenv.isDarwin darwin
