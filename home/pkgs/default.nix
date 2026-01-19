@@ -55,7 +55,7 @@ let
   
   darwin = [
     karabiner-elements
-    pinentry-mac
+    pinentry_mac
   ] ++ homebrew;
 in
 common ++ lib.optionals (!stdenv.isDarwin) nonDarwin ++ lib.optionals stdenv.isDarwin darwin
