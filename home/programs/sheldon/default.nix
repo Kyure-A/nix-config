@@ -34,10 +34,6 @@
         fzf = {
           github = "junegunn/fzf";
         };
-        # per-directory-history = {
-        #   github = "jimhester/per-directory-history";
-        #   apply = [ "source" ];
-        # };
         predict = {
           inline = "autoload -U predict-on && predict-on";
         };
