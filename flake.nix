@@ -60,12 +60,14 @@
     }:
     let
       karabiner-elements = (import ./overlays/karabiner-elements.nix);
+      lm-studio = (import ./overlays/lm-studio.nix);
       unity-hub = (import ./overlays/unity-hub.nix);
       rekordbox = (import ./overlays/rekordbox.nix);
       
       overlays = [
         brew-nix.overlays.default
         karabiner-elements
+        lm-studio
         unity-hub
         rekordbox
         rust-overlay.overlays.default
