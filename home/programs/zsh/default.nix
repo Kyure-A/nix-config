@@ -16,6 +16,6 @@ in
   programs.zsh = {
     enable = true;
     # Ensure zsh-defer is available before sheldon applies deferred plugins.
-    initExtraFirst = text;
+    initContent = pkgs.lib.mkBefore text;
   };
 }
