@@ -61,13 +61,13 @@
     let
       karabiner-elements = (import ./overlays/karabiner-elements.nix);
       unity-hub = (import ./overlays/unity-hub.nix);
-      # rekordbox = (import ./overlays/rekordbox.nix);
+      rekordbox = (import ./overlays/rekordbox.nix);
       
       overlays = [
         brew-nix.overlays.default
         karabiner-elements
         unity-hub
-        # rekordbox
+        rekordbox
         rust-overlay.overlays.default
         fenix.overlays.default
         rustowl-flake.overlays.default
