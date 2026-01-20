@@ -50,7 +50,7 @@ let
     reaper
     # rekordbox
     rustdesk
-    # unity-hub
+    unity-hub
   ];
   
   darwin = [
