@@ -48,7 +48,7 @@ let
     postman
     raycast
     reaper
-    # rekordbox
+    rekordbox
     rustdesk
     unity-hub
   ];
