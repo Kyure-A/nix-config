@@ -6,7 +6,6 @@ let
     DaisyDisk = 411643860;
     GoodNotes = 1444383602;
     Runcat = 1429033973;
-    Structured = 1499198946;
     Xcode = 497799835;
   };
 
