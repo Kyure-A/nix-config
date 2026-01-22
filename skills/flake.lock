@@ -6,11 +6,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1768742840,
-        "narHash": "sha256-gruSSLj99aht8U9vWr98lVSvuuTvgGXjdm99PxCcFag=",
+        "lastModified": 1768984332,
+        "narHash": "sha256-9Nf57MGdaPGTfLdxmf5I47ROvgTwthxQaHCL16v5Dh4=",
         "owner": "Kyure-A",
         "repo": "agent-skills-nix",
-        "rev": "c1d4e5538c4426a05e40f6222caeeca14e3f6180",
+        "rev": "7c6a22f336807d453c3a872f315bc2915c2b0549",
         "type": "github"
       },
       "original": {
@@ -99,11 +99,11 @@
     "vercel-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1768700542,
-        "narHash": "sha256-7kRLipylSZy+2VKGWy6xoFnGpsXlHLkLxsykjvafSsQ=",
+        "lastModified": 1768936765,
+        "narHash": "sha256-GQLxb+clwWxffdFNu2Aktgws1Q2BnBkNhJ6H458nsUk=",
         "owner": "vercel-labs",
         "repo": "agent-skills",
-        "rev": "ac6a79af08f6d32c34ee03c829824990f3de0a6d",
+        "rev": "dd157cbd26f5c1f1154214035d3f8c9d7fe87a1c",
         "type": "github"
       },
       "original": {
