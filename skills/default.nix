@@ -1,10 +1,10 @@
 {
   lib,
   agent-skills,
-  anthropic-skills,
-  vercel-skills,
-  remotion-skills,
-  my-skills,
+  personal,
+  anthropic,
+  vercel,
+  remotion,
   ...
 }:
 {
@@ -18,19 +18,19 @@
   programs.agent-skills = {
     enable = true;
     sources = {
+      personal = {
+        path = personal;
+      };
       anthropic = {
-        path = anthropic-skills;
+        path = anthropic;
         subdir = "skills";
       };
-      personal = {
-        path = my-skills;
-      };
       vercel = {
-        path = vercel-skills;
+        path = vercel;
         subdir = "skills";
       };
       remotion = {
-        path = remotion-skills;
+        path = remotion;
         subdir = "skills";
       };
     };

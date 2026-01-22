@@ -19,7 +19,7 @@
         "type": "github"
       }
     },
-    "anthropic-skills": {
+    "anthropic": {
       "flake": false,
       "locked": {
         "lastModified": 1766254184,
@@ -384,22 +384,6 @@
         "type": "github"
       }
     },
-    "my-skills": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1766736918,
-        "narHash": "sha256-ly5I8JDeqVUIgb5jp2q+IZXTne/kbFWLWSYzkgb79/4=",
-        "owner": "Kyure-A",
-        "repo": "skills",
-        "rev": "32461bed0ac47a66c801a1e00f5e8e1e49153543",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Kyure-A",
-        "repo": "skills",
-        "type": "github"
-      }
-    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -582,7 +566,23 @@
         "type": "github"
       }
     },
-    "remotion-skills": {
+    "personal": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1766736918,
+        "narHash": "sha256-ly5I8JDeqVUIgb5jp2q+IZXTne/kbFWLWSYzkgb79/4=",
+        "owner": "Kyure-A",
+        "repo": "skills",
+        "rev": "32461bed0ac47a66c801a1e00f5e8e1e49153543",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kyure-A",
+        "repo": "skills",
+        "type": "github"
+      }
+    },
+    "remotion": {
       "flake": false,
       "locked": {
         "lastModified": 1768915829,
@@ -709,10 +709,10 @@
     "skills-config": {
       "inputs": {
         "agent-skills": "agent-skills",
-        "anthropic-skills": "anthropic-skills",
-        "my-skills": "my-skills",
-        "remotion-skills": "remotion-skills",
-        "vercel-skills": "vercel-skills"
+        "anthropic": "anthropic",
+        "personal": "personal",
+        "remotion": "remotion",
+        "vercel": "vercel"
       },
       "locked": {
         "path": "./skills",
@@ -757,7 +757,7 @@
         "type": "github"
       }
     },
-    "vercel-skills": {
+    "vercel": {
       "flake": false,
       "locked": {
         "lastModified": 1769008142,

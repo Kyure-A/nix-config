@@ -3,19 +3,19 @@
 
   inputs = {
     agent-skills.url = "github:Kyure-A/agent-skills-nix";
-    anthropic-skills = {
+    anthropic = {
       url = "github:anthropics/skills";
       flake = false;
     };
-    vercel-skills = {
+    vercel = {
       url = "github:vercel-labs/agent-skills";
       flake = false;
     };
-    remotion-skills = {
+    remotion = {
       url = "github:remotion-dev/skills";
       flake = false;
     };
-    my-skills = {
+    personal = {
       url = "github:Kyure-A/skills";
       flake = false;
     };
@@ -25,10 +25,10 @@
     {
       self,
       agent-skills,
-      anthropic-skills,
-      vercel-skills,
-      remotion-skills,
-      my-skills,
+      personal,
+      anthropic,
+      vercel,
+      remotion,
       ...
     }:
     {
@@ -39,10 +39,10 @@
           // {
             inherit
               agent-skills
-              anthropic-skills
-              vercel-skills
-              remotion-skills
-              my-skills
+              personal
+              anthropic
+              vercel
+              remotion
               ;
           }
         );
