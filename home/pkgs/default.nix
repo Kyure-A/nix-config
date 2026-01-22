@@ -43,7 +43,9 @@ let
     alacritty
     alcom
     crossover
+    firefox
     ghostty
+    lm-studio
     orbstack
     postman
     raycast
@@ -55,6 +57,7 @@ let
   
   darwin = [
     karabiner-elements
+    mas
     pinentry_mac
   ] ++ homebrew;
 in

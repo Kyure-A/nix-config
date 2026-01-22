@@ -6,11 +6,5 @@
       upgrade = true;
       # cleanup = "uninstall";
     };
-
-    casks = [
-      "firefox"
-      "lm-studio"
-      "unity-hub"
-    ];
   };
 }
