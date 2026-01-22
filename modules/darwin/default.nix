@@ -10,7 +10,6 @@
       DaisyDisk = 411643860;
       GoodNotes = 1444383602;
       Runcat = 1429033973;
-      Xcode = 497799835;
     };
   };
 
