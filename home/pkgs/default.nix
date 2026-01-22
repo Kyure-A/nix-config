@@ -54,11 +54,12 @@ let
     rustdesk
     unity-hub
   ];
-  
+
   darwin = [
     karabiner-elements
     mas
     pinentry_mac
-  ] ++ homebrew;
+  ]
+  ++ homebrew;
 in
 common ++ lib.optionals (!stdenv.isDarwin) nonDarwin ++ lib.optionals stdenv.isDarwin darwin

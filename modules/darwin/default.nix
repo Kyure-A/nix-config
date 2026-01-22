@@ -1,6 +1,7 @@
 # https://nix-darwin.github.io/nix-darwin/manual/index.html
 
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   system.primaryUser = "kyre";
 
   homebrew = {

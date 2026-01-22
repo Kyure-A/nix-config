@@ -63,7 +63,7 @@
       lm-studio = (import ./overlays/lm-studio.nix);
       unity-hub = (import ./overlays/unity-hub.nix);
       rekordbox = (import ./overlays/rekordbox.nix);
-      
+
       overlays = [
         brew-nix.overlays.default
         karabiner-elements
@@ -91,7 +91,7 @@
             overlays
             emacs-d
             skills-config
-          ;
+            ;
         }
       );
 
@@ -105,7 +105,7 @@
             overlays
             emacs-d
             skills-config
-          ;
+            ;
         })
         // (import ./hosts/x230 {
           inherit
