@@ -1,15 +1,35 @@
-#+TITLE: README
+#+TITLE: Nix Config
 #+AUTHOR: Kyure_A
 #+OPTIONS: toc:nil
 
+This repository manages its configuration using Nix / Home Manager.
+
+** Project Structure
+#+begin_src
+.
+├── flake.nix           # Nix flake entry point
+├── hosts/              # Host-specific configs
+│   ├── darwin/         
+│   ├── wsl/
+│   ├── x230/
+├── modules/            # Shared modules
+│   ├── darwin/
+│   └── nixos/
+├── home/               # Home Manager root
+│   ├── pkgs/           # Lists packages that do not require configuration (CLI, brew-nix)
+│   ├── programs/       # Lists packages that require configuration 
+├── overlays/
+├── node2nix/           # Node package generation inputs
+└── skills/             # Agent skills flake (agent-skills-nix)
+#+end_src
 
 ** Systems
-*** MacBook Air (M4)
+*** nix-darwin
 #+begin_src shell
   sudo nix run nix-darwin --extra-experimental-features 'flakes nix-command' -- switch --flake .#darwin --show-trace
 #+end_src
 
-*** Windows Subsystem for Linux
+*** NixOS-WSL
 #+begin_src shell
   sudo nixos-rebuild switch --flake .#wsl --show-trace
 #+end_src
@@ -24,7 +44,6 @@ in node2nix/
 #+begin_src shell
  nix-shell -p nodePackages.node2nix --command "node2nix -i ./node2nix.json -o packages.nix"
 #+end_src
-
 
 ** Format
 #+begin_src shell
