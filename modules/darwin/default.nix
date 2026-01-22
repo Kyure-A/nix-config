@@ -1,15 +1,18 @@
 # https://nix-darwin.github.io/nix-darwin/manual/index.html
 
-{ pkgs, ... }:
-let
-  homebrew = import ./homebrew;
-in
-{
+{ pkgs, ... }: {
   system.primaryUser = "kyre";
 
-  imports = [
-    homebrew
-  ];
+  homebrew = {
+    enable = true;
+    masApps = {
+      Amphetamine = 937984704;
+      DaisyDisk = 411643860;
+      GoodNotes = 1444383602;
+      Runcat = 1429033973;
+      Xcode = 497799835;
+    };
+  };
 
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
