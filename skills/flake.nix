@@ -11,6 +11,10 @@
       url = "github:vercel-labs/agent-skills";
       flake = false;
     };
+    remotion-skills = {
+      url = "github:remotion-dev/skills";
+      flake = false;
+    };
     my-skills = {
       url = "github:Kyure-A/skills";
       flake = false;
@@ -23,6 +27,7 @@
       agent-skills,
       anthropic-skills,
       vercel-skills,
+      remotion-skills,
       my-skills,
       ...
     }:
@@ -36,6 +41,7 @@
               agent-skills
               anthropic-skills
               vercel-skills
+              remotion-skills
               my-skills
               ;
           }

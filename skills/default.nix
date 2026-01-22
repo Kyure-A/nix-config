@@ -3,6 +3,7 @@
   agent-skills,
   anthropic-skills,
   vercel-skills,
+  remotion-skills,
   my-skills,
   ...
 }:
@@ -28,12 +29,17 @@
         path = vercel-skills;
         subdir = "skills";
       };
+      remotion = {
+        path = remotion-skills;
+        subdir = "skills";
+      };
     };
     skills.enable = [
       "frontend-design"
       "pdf"
       "pptx"
       "skill-creator"
+      "remotion"
     ];
     skills.enableAll = [ "personal" ];
     targets = {
