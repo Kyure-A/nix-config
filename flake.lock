@@ -6,11 +6,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1767105052,
-        "narHash": "sha256-nzeEIvgWseoKZ2Ep8nssNYAO0kmtOfhsIvo9Dz5cb68=",
+        "lastModified": 1769005952,
+        "narHash": "sha256-ssCTLNMIcoZkJ20GsaqLCQw22+tN921CaCWsl+AHJEw=",
         "owner": "Kyure-A",
         "repo": "agent-skills-nix",
-        "rev": "318e2dd549f57ab1f506abd38f39ce4fc81b673e",
+        "rev": "525c6dc46215ae8ae36de06b9ff86196e5e92f47",
         "type": "github"
       },
       "original": {
@@ -582,6 +582,22 @@
         "type": "github"
       }
     },
+    "remotion-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768915829,
+        "narHash": "sha256-+CxM3JB/C82GiWsp278WQNC0mBrfZlIKLZBkO0/Tqe8=",
+        "owner": "remotion-dev",
+        "repo": "skills",
+        "rev": "9550e1643dd451d3f8c131579d8ae827b2ce3eea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "remotion-dev",
+        "repo": "skills",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "brew-api": "brew-api",
@@ -695,6 +711,7 @@
         "agent-skills": "agent-skills",
         "anthropic-skills": "anthropic-skills",
         "my-skills": "my-skills",
+        "remotion-skills": "remotion-skills",
         "vercel-skills": "vercel-skills"
       },
       "locked": {
@@ -743,11 +760,11 @@
     "vercel-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1768431880,
-        "narHash": "sha256-YaTit3eYaElOBPi4qEyaFXKpeIFesK6w1dRKXOD0TiU=",
+        "lastModified": 1769008142,
+        "narHash": "sha256-IszIH8ZpFMn4PRGsJwzgL+MbclDUjd1/RpVYC3QmrRo=",
         "owner": "vercel-labs",
         "repo": "agent-skills",
-        "rev": "73912c327187754099d42e56d9a2938baf298f6b",
+        "rev": "cf9a8a624718607352f29338da830d2844fa879e",
         "type": "github"
       },
       "original": {
