@@ -712,6 +712,7 @@
         "anthropic": "anthropic",
         "personal": "personal",
         "remotion": "remotion",
+        "ui-skills": "ui-skills",
         "vercel": "vercel"
       },
       "locked": {
@@ -754,6 +755,22 @@
       "original": {
         "owner": "Kyure-A",
         "repo": "twist.nix",
+        "type": "github"
+      }
+    },
+    "ui-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1769091394,
+        "narHash": "sha256-kWzLPS62J5otCe0wiListuAEKSYTd15HX0a51glxbtk=",
+        "owner": "ibelick",
+        "repo": "ui-skills",
+        "rev": "cb2a2600a4b8cec4ff2caecf4f6c29381d7c1c71",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ibelick",
+        "repo": "ui-skills",
         "type": "github"
       }
     },

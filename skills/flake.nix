@@ -15,6 +15,10 @@
       url = "github:remotion-dev/skills";
       flake = false;
     };
+    ui-skills = {
+      url = "github:ibelick/ui-skills";
+      flake = false;
+    };
     personal = {
       url = "github:Kyure-A/skills";
       flake = false;
