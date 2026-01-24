@@ -30,6 +30,8 @@ in
         };
       }
     ];
-    specialArgs = { isWsl = false; };
+    specialArgs = {
+      isWsl = false;
+    };
   };
 }
