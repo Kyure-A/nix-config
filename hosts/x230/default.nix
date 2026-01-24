@@ -30,5 +30,6 @@ in
         };
       }
     ];
+    specialArgs = { isWsl = false; };
   };
 }

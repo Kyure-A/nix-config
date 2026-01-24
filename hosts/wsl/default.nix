@@ -19,6 +19,12 @@ in
       nixos-wsl.nixosModules.default
       home-manager.nixosModules.home-manager
       {
+        wsl = {
+          enable = true;
+          defaultUser = "kyre";
+        };
+      }
+      {
         home-manager.useUserPackages = true;
         home-manager.users."${username}" = import ../../home {
           inherit

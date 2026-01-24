@@ -139,11 +139,5 @@
       };
       services.xserver.desktopManager.gnome.enable = true;
     })
-    (lib.mkIf isWsl {
-      wsl = {
-        enable = true;
-        defaultUser = "kyre";
-      };
-    })
   ];
 }
