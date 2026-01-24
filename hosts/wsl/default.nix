@@ -15,7 +15,7 @@ in
   wsl = nixpkgs.lib.nixosSystem {
     inherit system;
     modules = [
-      ../../modules/nixos/nixos-wsl
+      ../../modules/nixos
       nixos-wsl.nixosModules.default
       home-manager.nixosModules.home-manager
       {
@@ -31,6 +31,9 @@ in
         };
       }
     ];
-    specialArgs = { inherit nixos-wsl; };
+    specialArgs = {
+      inherit nixos-wsl;
+      isWsl = true;
+    };
   };
 }
