@@ -31,9 +31,6 @@ in
         };
       }
     ];
-    specialArgs = {
-      inherit nixos-wsl;
-      isWsl = true;
-    };
+    specialArgs = { isWsl = true; };
   };
 }

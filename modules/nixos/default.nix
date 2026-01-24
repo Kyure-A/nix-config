@@ -2,13 +2,10 @@
   config,
   lib,
   pkgs,
-  nixos-wsl ? null,
   isWsl ? false,
   ...
 }:
 {
-  imports = lib.optionals (isWsl && nixos-wsl != null) [ nixos-wsl.nixosModules.wsl ];
-
   config = lib.mkMerge [
     {
       nix = {
