@@ -1,0 +1,1 @@
+/Users/kyre/ghq/github.com/Kyure-A/dotnix/AGENTS.md
