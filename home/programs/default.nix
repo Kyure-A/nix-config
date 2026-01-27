@@ -6,6 +6,7 @@
 let
   alacritty = import ./alacritty;
   ccusage = import ./ccusage { inherit pkgs node2nix; };
+  copilot-language-server = import ./copilot-language-server { inherit pkgs node2nix; };
   emacs-twist = import ./emacs-twist;
   git = import ./git { inherit pkgs; };
   karabiner = import ./karabiner;
@@ -15,6 +16,7 @@ let
   zsh = import ./zsh { inherit pkgs; };
   common = [
     ccusage
+    copilot-language-server
     emacs-twist
     git
     sheldon
