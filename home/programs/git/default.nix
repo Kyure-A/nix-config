@@ -3,6 +3,11 @@
   programs.git = {
     enable = true;
 
+    ignores = [
+      "**/.claude/settings.local.json"
+      ".DS_Store"
+    ];
+
     settings = {
       user = {
         name = "Kyure_A";
