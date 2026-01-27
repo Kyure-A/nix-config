@@ -21,7 +21,7 @@ This repository manages its configuration using Nix / Home Manager.
 │   ├── pkgs/           # Lists packages that do not require configuration (CLI, brew-nix)
 │   ├── programs/       # Lists packages that require configuration 
 ├── overlays/
-├── node2nix/           # Node package generation inputs
+├── bun2nix/            # Bun package generation inputs
 └── skills/             # Agent skills flake (agent-skills-nix)
 #+end_src
 
@@ -41,10 +41,11 @@ This repository manages its configuration using Nix / Home Manager.
  sudo nixos-rebuild switch --flake .#x230 --show-trace
 #+end_src
 
-** node2nix
-in node2nix/
+** bun2nix
+in bun2nix/
 #+begin_src shell
- nix-shell -p nodePackages.node2nix --command "node2nix -i ./node2nix.json -o packages.nix"
+ bun install
+ nix run github:nix-community/bun2nix -- -o bun.nix
 #+end_src
 
 ** Format
