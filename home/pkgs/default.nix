@@ -1,8 +1,11 @@
-{ pkgs }:
+{ pkgs, bun2nix }:
 with pkgs;
 let
+  bun2nixPkgs = bun2nix;
   common = [
     #aider-chat
+    bun2nixPkgs."atcoder-cli"
+    bun2nixPkgs."ccusage"
     bun
     claude-code
     codex

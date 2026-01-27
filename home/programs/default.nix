@@ -5,7 +5,6 @@
 }:
 let
   alacritty = import ./alacritty;
-  ccusage = import ./ccusage { inherit pkgs bun2nix; };
   copilot-language-server = import ./copilot-language-server { inherit pkgs bun2nix; };
   emacs-twist = import ./emacs-twist;
   git = import ./git { inherit pkgs; };
@@ -15,7 +14,6 @@ let
   tmux = import ./tmux { inherit pkgs; };
   zsh = import ./zsh { inherit pkgs; };
   common = [
-    ccusage
     copilot-language-server
     emacs-twist
     git

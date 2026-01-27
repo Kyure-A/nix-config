@@ -20,7 +20,7 @@ in
     emacs-d.homeModules.${system}.twist
     inputs.skills-config.homeManagerModules.default
   ];
-  home.packages = import ./pkgs { inherit pkgs; };
+  home.packages = import ./pkgs { inherit pkgs bun2nix; };
 
   home.stateVersion = "25.05";
 }
