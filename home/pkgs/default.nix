@@ -5,6 +5,7 @@ let
     #aider-chat
     bun
     claude-code
+    copilot-language-server
     codex
     delta
     deno
