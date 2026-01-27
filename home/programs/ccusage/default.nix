@@ -1,4 +1,4 @@
-{ pkgs, node2nix }:
+{ pkgs, bun2nix }:
 {
-  home.packages = [ node2nix."ccusage" ];
+  home.packages = [ bun2nix."ccusage" ];
 }

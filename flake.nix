@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
+    bun2nix = {
+      url = "github:nix-community/bun2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,6 +51,7 @@
     {
       self,
       nixpkgs,
+      bun2nix,
       home-manager,
       nixos-wsl,
       rust-overlay,
@@ -66,6 +71,7 @@
 
       overlays = [
         brew-nix.overlays.default
+        bun2nix.overlays.default
         karabiner-elements
         lm-studio
         unity-hub

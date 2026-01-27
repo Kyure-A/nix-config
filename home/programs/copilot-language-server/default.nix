@@ -1,4 +1,4 @@
-{ pkgs, node2nix }:
+{ pkgs, bun2nix }:
 let
   platforms = {
     "x86_64-linux" = "linux-amd64";
@@ -7,13 +7,14 @@ let
     "aarch64-darwin" = "darwin-arm64";
   };
   platform = builtins.getAttr pkgs.system platforms;
+  copilot = bun2nix."@github/copilot-language-server";
 in
 {
-  home.packages = [ node2nix."@github/copilot-language-server" ];
+  home.packages = [ copilot ];
 
   home.sessionVariables = {
     COPILOT_LANGUAGE_SERVER_PATH = "${
-      node2nix."@github/copilot-language-server"
-    }/lib/node_modules/@github/copilot-language-server/native/${platform}/copilot-language-server";
+      copilot
+    }/share/copilot-language-server/node_modules/@github/copilot-language-server/native/${platform}/copilot-language-server";
   };
 }

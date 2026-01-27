@@ -1,4 +1,4 @@
-{ pkgs, node2nix }:
+{ pkgs, bun2nix }:
 {
-  home.packages = [ node2nix."atcoder-cli" ];
+  home.packages = [ bun2nix."atcoder-cli" ];
 }

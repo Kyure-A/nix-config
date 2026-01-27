@@ -7,13 +7,13 @@
 }:
 let
   pkgs = import nixpkgs {
-    inherit system overlays node2nix;
+    inherit system overlays;
     config.allowUnfree = true;
   };
 
-  node2nix = pkgs.callPackage ../node2nix { inherit pkgs; };
+  bun2nix = pkgs.callPackage ../bun2nix { inherit pkgs; };
 
-  programs = import ./programs { inherit pkgs node2nix inputs; };
+  programs = import ./programs { inherit pkgs bun2nix inputs; };
 in
 {
   imports = programs ++ [
