@@ -50,7 +50,7 @@ jobs:
 
   lightweight-tests:
     runs-on: ubuntu-latest
-    name: Format and node2nix tests
+    name: Format and bun2nix tests
     
     steps:
       - uses: actions/checkout@v4
@@ -72,7 +72,7 @@ jobs:
         run: |
           nix fmt ./ -- --check
       
-      - name: Test node2nix
+      - name: Test bun2nix
         run: |
-          cd node2nix
-          nix-shell -p nodePackages.node2nix --command "node2nix -i ./node2nix.json -o packages.nix"
+          nix run github:nix-community/bun2nix -- -l bun2nix/bun.lock -o bun2nix/bun.nix
+          git diff --exit-code bun2nix/bun.nix
