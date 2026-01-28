@@ -6,7 +6,6 @@ let
   common = [
     #aider-chat
     bun2nixPkgs."atcoder-cli"
-    llmAgents.ccusage
     bun
     claude-code
     codex
@@ -21,6 +20,8 @@ let
     gnumake
     gnupg
     keybase
+    llmAgents.ccusage
+    llmAgents.ccusage-codex
     fastfetch
     nixpkgs-fmt
     nodejs_22
