@@ -31,6 +31,10 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur-packages = {
+      url = "github:Kyure-A/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     rustowl-flake.url = "github:mrcjkb/rustowl-flake";
     skills-config.url = "path:./skills";
     emacs-d = {
@@ -61,6 +65,7 @@
       nixos-wsl,
       rust-overlay,
       fenix,
+      nur-packages,
       rustowl-flake,
       nix-darwin,
       skills-config,
@@ -84,6 +89,7 @@
         rekordbox
         rust-overlay.overlays.default
         fenix.overlays.default
+        nur-packages.overlays.default
         rustowl-flake.overlays.default
       ];
     in
