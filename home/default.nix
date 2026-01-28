@@ -13,7 +13,7 @@ let
 
   bun2nix = pkgs.callPackage ../bun2nix { inherit pkgs; };
 
-  programs = import ./programs { inherit pkgs bun2nix inputs; };
+  programs = import ./programs { inherit pkgs; };
 in
 {
   imports = programs ++ [
