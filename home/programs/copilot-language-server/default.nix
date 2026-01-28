@@ -13,8 +13,6 @@ in
   home.packages = [ copilot ];
 
   home.sessionVariables = {
-    COPILOT_LANGUAGE_SERVER_PATH = "${
-      copilot
-    }/share/copilot-language-server/node_modules/@github/copilot-language-server/native/${platform}/copilot-language-server";
+    COPILOT_LANGUAGE_SERVER_PATH = "${copilot}/share/copilot-language-server/node_modules/@github/copilot-language-server/native/${platform}/copilot-language-server";
   };
 }
