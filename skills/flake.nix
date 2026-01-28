@@ -20,7 +20,7 @@
       flake = false;
     };
     personal = {
-      url = "github:Kyure-A/skills";
+      url = "github:Kyure-A/skills-private";
       flake = false;
     };
   };
