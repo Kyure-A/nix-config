@@ -95,4 +95,5 @@ jobs:
       - name: Test bun2nix
         run: |
           nix run github:nix-community/bun2nix -- -l bun2nix/bun.lock -o bun2nix/bun.nix
+          nix fmt ./bun2nix/bun.nix
           git diff --exit-code bun2nix/bun.nix
