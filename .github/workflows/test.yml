@@ -48,30 +48,50 @@ jobs:
       - name: Evaluate ${{ matrix.name }} configuration
         run: ${{ matrix.command }}
 
-  lightweight-tests:
+  format:
     runs-on: ubuntu-latest
-    name: Format and bun2nix tests
-    
+    name: Format
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
         with:
           extra-conf: |
             experimental-features = nix-command flakes
-      
+
       - name: Setup Cachix
         uses: cachix/cachix-action@v15
         with:
           name: kyre
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
           pushFailureFallback: ignore
-      
+
       - name: Test nix fmt
         run: |
           nix fmt ./ -- --check
-      
+
+  bun2nix-test:
+    runs-on: ubuntu-latest
+    name: bun2nix test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+        with:
+          extra-conf: |
+            experimental-features = nix-command flakes
+
+      - name: Setup Cachix
+        uses: cachix/cachix-action@v15
+        with:
+          name: kyre
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+          pushFailureFallback: ignore
+
       - name: Test bun2nix
         run: |
           nix run github:nix-community/bun2nix -- -l bun2nix/bun.lock -o bun2nix/bun.nix
