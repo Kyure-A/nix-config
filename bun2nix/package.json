@@ -2,8 +2,6 @@
   "name": "bun2nix-packages",
   "private": true,
   "dependencies": {
-    "@github/copilot-language-server": "1.357.0",
-    "atcoder-cli": "2.2.0",
-    "ccusage": "15.9.7"
+    "atcoder-cli": "2.2.0"
   }
 }

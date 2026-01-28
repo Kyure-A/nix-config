@@ -13,10 +13,6 @@
   ...
 }:
 {
-  "@github/copilot-language-server@1.357.0" = fetchurl {
-    url = "https://registry.npmjs.org/@github/copilot-language-server/-/copilot-language-server-1.357.0.tgz";
-    hash = "sha512-kxGiClBSlmHHDnK62UhCcJafPR3PJPmYZcdhxuiEKsXfUoPCMo98n5V4iziWfWbFtkVQDaWP4fI3T/fT7lyeOQ==";
-  };
   "@sindresorhus/is@0.14.0" = fetchurl {
     url = "https://registry.npmjs.org/@sindresorhus/is/-/is-0.14.0.tgz";
     hash = "sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==";
@@ -120,10 +116,6 @@
   "caseless@0.12.0" = fetchurl {
     url = "https://registry.npmjs.org/caseless/-/caseless-0.12.0.tgz";
     hash = "sha512-4tYFyifaFfGacoiObjJegolkwSU4xQNGbVgUiNYVUxbQ2x2lUsFvY4hVgVzGiIe6WLOPqycWXA40l+PWsxthUw==";
-  };
-  "ccusage@15.9.7" = fetchurl {
-    url = "https://registry.npmjs.org/ccusage/-/ccusage-15.9.7.tgz";
-    hash = "sha512-GHipPGGW9rqKlrD/0nn3p/vQbxUfkIUYBKYaFeDh7A/EJgXuLdJQlXF+LWgSlB7LlqXDPTX6fr4p6lXylnR8Tg==";
   };
   "chalk@3.0.0" = fetchurl {
     url = "https://registry.npmjs.org/chalk/-/chalk-3.0.0.tgz";
@@ -840,18 +832,6 @@
   "verror@1.10.0" = fetchurl {
     url = "https://registry.npmjs.org/verror/-/verror-1.10.0.tgz";
     hash = "sha512-ZZKSmDAEFOijERBLkmYfJ+vmk3w+7hOLYDNkRCuRuMJGEmqYNCNLyBBFwWKVMhfwaEF3WOd0Zlw86U/WC/+nYw==";
-  };
-  "vscode-jsonrpc@8.2.0" = fetchurl {
-    url = "https://registry.npmjs.org/vscode-jsonrpc/-/vscode-jsonrpc-8.2.0.tgz";
-    hash = "sha512-C+r0eKJUIfiDIfwJhria30+TYWPtuHJXHtI7J0YlOmKAo7ogxP20T0zxB7HZQIFhIyvoBPwWskjxrvAtfjyZfA==";
-  };
-  "vscode-languageserver-protocol@3.17.5" = fetchurl {
-    url = "https://registry.npmjs.org/vscode-languageserver-protocol/-/vscode-languageserver-protocol-3.17.5.tgz";
-    hash = "sha512-mb1bvRJN8SVznADSGWM9u/b07H7Ecg0I3OgXDuLdn307rl/J3A9YD6/eYOssqhecL27hK1IPZAsaqh00i/Jljg==";
-  };
-  "vscode-languageserver-types@3.17.5" = fetchurl {
-    url = "https://registry.npmjs.org/vscode-languageserver-types/-/vscode-languageserver-types-3.17.5.tgz";
-    hash = "sha512-Ld1VelNuX9pdF39h2Hgaeb5hEZM2Z3jUrrMgWQAu82jMtZp7p3vJT3BzToKtZI7NgQssZje5o0zryOrhQvzQAg==";
   };
   "w3c-hr-time@1.0.2" = fetchurl {
     url = "https://registry.npmjs.org/w3c-hr-time/-/w3c-hr-time-1.0.2.tgz";
