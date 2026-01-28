@@ -1,11 +1,7 @@
-{
-  pkgs,
-  bun2nix,
-  inputs,
-}:
+{ pkgs }:
 let
   alacritty = import ./alacritty;
-  copilot-language-server = import ./copilot-language-server { inherit pkgs bun2nix; };
+  copilot-language-server = import ./copilot-language-server { inherit pkgs; };
   emacs-twist = import ./emacs-twist;
   git = import ./git { inherit pkgs; };
   karabiner = import ./karabiner;

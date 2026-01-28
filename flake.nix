@@ -7,6 +7,10 @@
       url = "github:nix-community/bun2nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,6 +56,7 @@
       self,
       nixpkgs,
       bun2nix,
+      llm-agents,
       home-manager,
       nixos-wsl,
       rust-overlay,
@@ -72,6 +77,7 @@
       overlays = [
         brew-nix.overlays.default
         bun2nix.overlays.default
+        llm-agents.overlays.default
         karabiner-elements
         lm-studio
         unity-hub

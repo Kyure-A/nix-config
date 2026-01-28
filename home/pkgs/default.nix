@@ -2,10 +2,11 @@
 with pkgs;
 let
   bun2nixPkgs = bun2nix;
+  llmAgents = pkgs."llm-agents";
   common = [
     #aider-chat
     bun2nixPkgs."atcoder-cli"
-    bun2nixPkgs."ccusage"
+    llmAgents.ccusage
     bun
     claude-code
     codex
