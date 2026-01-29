@@ -55,7 +55,8 @@
     };
   };
 
-  outputs = inputs:
+  outputs =
+    inputs:
     let
       karabiner-elements = (import ./overlays/karabiner-elements.nix);
       lm-studio = (import ./overlays/lm-studio.nix);
