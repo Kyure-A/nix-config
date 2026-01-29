@@ -1,7 +1,7 @@
 {
   lib,
   agent-skills,
-  personal,
+  # personal,
   anthropic,
   vercel,
   remotion,
@@ -18,9 +18,9 @@
   programs.agent-skills = {
     enable = true;
     sources = {
-      personal = {
-        path = personal;
-      };
+      # personal = {
+      #   path = personal;
+      # };
       anthropic = {
         path = anthropic;
         subdir = "skills";
@@ -41,7 +41,7 @@
       "skill-creator"
       "remotion"
     ];
-    skills.enableAll = [ "personal" ];
+    # skills.enableAll = [ "personal" ];
     targets = {
       codex = {
         dest = ".codex/skills";

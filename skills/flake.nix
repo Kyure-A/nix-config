@@ -19,17 +19,16 @@
       url = "github:ibelick/ui-skills";
       flake = false;
     };
-    personal = {
-      url = "github:Kyure-A/skills-private";
-      flake = false;
-    };
+    # personal = {
+    #   url = "github:Kyure-A/skills-private";
+    #   flake = false;
+    # };
   };
 
   outputs =
     {
       self,
       agent-skills,
-      personal,
       anthropic,
       vercel,
       remotion,
@@ -43,7 +42,6 @@
           // {
             inherit
               agent-skills
-              personal
               anthropic
               vercel
               remotion
