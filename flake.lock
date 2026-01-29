@@ -702,6 +702,7 @@
       "inputs": {
         "brew-api": "brew-api",
         "brew-nix": "brew-nix",
+        "blueprint": "blueprint",
         "bun2nix": "bun2nix",
         "emacs-d": "emacs-d",
         "fenix": "fenix",
@@ -817,11 +818,11 @@
         "vercel": "vercel"
       },
       "locked": {
-        "path": "./skills",
+        "path": "./inputs/skills",
         "type": "path"
       },
       "original": {
-        "path": "./skills",
+        "path": "./inputs/skills",
         "type": "path"
       },
       "parent": []

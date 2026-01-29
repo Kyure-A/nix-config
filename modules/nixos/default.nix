@@ -2,9 +2,11 @@
   config,
   lib,
   pkgs,
-  isWsl ? false,
   ...
 }:
+let
+  isWsl = (config ? wsl) && (config.wsl.enable or false);
+in
 {
   config = lib.mkMerge [
     {
