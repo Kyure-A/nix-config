@@ -2,6 +2,7 @@
 let
   alacritty = import ./alacritty;
   copilot-language-server = import ./copilot-language-server { inherit pkgs; };
+  direnv = import ./direnv;
   emacs-twist = import ./emacs-twist;
   git = import ./git { inherit pkgs; };
   karabiner = import ./karabiner;
@@ -11,6 +12,7 @@ let
   zsh = import ./zsh { inherit pkgs; };
   common = [
     copilot-language-server
+    direnv
     emacs-twist
     git
     sheldon
