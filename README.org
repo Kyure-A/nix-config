@@ -17,12 +17,13 @@ This repository manages its configuration using Nix / Home Manager.
 ├── modules/            # Shared modules
 │   ├── darwin/
 │   └── nixos/
-├── home/               # Home Manager root
-│   ├── pkgs/           # Lists packages that do not require configuration (CLI, brew-nix)
-│   ├── programs/       # Lists packages that require configuration 
+│   └── home/           # Home Manager root
+│       ├── pkgs/       # Lists packages that do not require configuration (CLI, brew-nix)
+│       ├── programs/   # Lists packages that require configuration 
 ├── overlays/
-├── bun2nix/            # Bun package generation inputs
-└── skills/             # Agent skills flake (agent-skills-nix)
+└── inputs/
+    ├── bun2nix/        # Bun package generation inputs
+    └── skills/         # Agent skills flake (agent-skills-nix)
 #+end_src
 
 ** Systems
@@ -42,7 +43,7 @@ This repository manages its configuration using Nix / Home Manager.
 #+end_src
 
 ** bun2nix
-in bun2nix/
+in inputs/bun2nix/
 #+begin_src shell
  bun install
  nix run github:nix-community/bun2nix -- -o bun.nix

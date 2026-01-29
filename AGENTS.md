@@ -13,21 +13,21 @@ See `README.org` for full documentation and per-host setup notes.
 
 ## Agent Skills (agent-skills-nix)
 
-Skills are configured via the local flake in `skills/`.
+Skills are configured via the local flake in `inputs/skills/`.
 
-- **Configuration**: `skills/flake.nix`, `skills/default.nix`
-- **Home Manager import**: `home/default.nix`
+- **Configuration**: `inputs/skills/flake.nix`, `inputs/skills/default.nix`
+- **Home Manager import**: `modules/home/default.nix`
 
 ### Adding a new external skill
 
-1. Add a flake input in `skills/flake.nix`.
-2. Register the source in `skills/default.nix` under `programs.agent-skills.sources`.
+1. Add a flake input in `inputs/skills/flake.nix`.
+2. Register the source in `inputs/skills/default.nix` under `programs.agent-skills.sources`.
 3. Enable the skill in `programs.agent-skills.skills.enable`.
 4. Rebuild using the appropriate switch command (see Core Commands).
 
 ### Current skills
 
-Enabled in `skills/default.nix`
+Enabled in `inputs/skills/default.nix`
 
 ## System Targets
 
