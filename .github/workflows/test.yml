@@ -37,6 +37,7 @@ jobs:
         with:
           extra-conf: |
             experimental-features = nix-command flakes
+            access-tokens = github.com=${{ secrets.GH_PAT }}
       
       - name: Setup Cachix
         uses: cachix/cachix-action@v15
@@ -60,6 +61,7 @@ jobs:
         with:
           extra-conf: |
             experimental-features = nix-command flakes
+            access-tokens = github.com=${{ secrets.GH_PAT }}
 
       - name: Setup Cachix
         uses: cachix/cachix-action@v15
@@ -84,6 +86,7 @@ jobs:
         with:
           extra-conf: |
             experimental-features = nix-command flakes
+            access-tokens = github.com=${{ secrets.GH_PAT }}
 
       - name: Setup Cachix
         uses: cachix/cachix-action@v15
