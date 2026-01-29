@@ -682,22 +682,6 @@
         "type": "github"
       }
     },
-    "personal": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1769569085,
-        "narHash": "sha256-qUK0XsnCuYe3QbFaptLmU0ep36bC/seSyqjYqSDuOoU=",
-        "owner": "Kyure-A",
-        "repo": "skills-private",
-        "rev": "207743f28562fb56a06e3accccca5e6e365f8340",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Kyure-A",
-        "repo": "skills-private",
-        "type": "github"
-      }
-    },
     "remotion": {
       "flake": false,
       "locked": {
@@ -828,7 +812,6 @@
       "inputs": {
         "agent-skills": "agent-skills",
         "anthropic": "anthropic",
-        "personal": "personal",
         "remotion": "remotion",
         "ui-skills": "ui-skills",
         "vercel": "vercel"
