@@ -11,6 +11,7 @@ let
     codex
     delta
     deno
+    devenv
     docker-compose
     eza
     gcc
