@@ -1,7 +1,34 @@
 # https://nix-darwin.github.io/nix-darwin/manual/index.html
 
-{ pkgs, ... }:
 {
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+{
+  nixpkgs = {
+    hostPlatform = lib.mkDefault "aarch64-darwin";
+    overlays = [
+      inputs.brew-nix.overlays.default
+      inputs.bun2nix.overlays.default
+      inputs.llm-agents.overlays.default
+      (import ../../overlays/karabiner-elements.nix)
+      (import ../../overlays/lm-studio.nix)
+      (import ../../overlays/unity-hub.nix)
+      (import ../../overlays/rekordbox.nix)
+      inputs.rust-overlay.overlays.default
+      inputs.fenix.overlays.default
+      inputs.rustowl-flake.overlays.default
+    ];
+  };
+
+  home-manager = {
+    useUserPackages = true;
+    useGlobalPkgs = true;
+    extraSpecialArgs = { inherit inputs pkgs; };
+  };
+
   system.primaryUser = "kyre";
 
   homebrew = {

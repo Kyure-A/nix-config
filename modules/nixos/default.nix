@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -10,6 +11,23 @@ in
 {
   config = lib.mkMerge [
     {
+      nixpkgs = {
+        hostPlatform = lib.mkDefault "x86_64-linux";
+        overlays = [
+          inputs.bun2nix.overlays.default
+          inputs.llm-agents.overlays.default
+          inputs.rust-overlay.overlays.default
+          inputs.fenix.overlays.default
+          inputs.rustowl-flake.overlays.default
+        ];
+      };
+
+      home-manager = {
+        useUserPackages = true;
+        useGlobalPkgs = true;
+        extraSpecialArgs = { inherit inputs pkgs; };
+      };
+
       nix = {
         settings.experimental-features = [
           "nix-command"
