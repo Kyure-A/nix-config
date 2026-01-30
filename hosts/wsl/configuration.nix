@@ -9,6 +9,14 @@ in
     inputs.home-manager.nixosModules.home-manager
   ];
 
+  nixpkgs.overlays = [
+    inputs.bun2nix.overlays.default
+    inputs.llm-agents.overlays.default
+    inputs.rust-overlay.overlays.default
+    inputs.fenix.overlays.default
+    inputs.rustowl-flake.overlays.default
+  ];
+
   nixpkgs.hostPlatform = "x86_64-linux";
 
   wsl = {
