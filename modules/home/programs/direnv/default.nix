@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   programs.direnv = {
     enable = true;
@@ -26,5 +27,10 @@
     #!/usr/bin/env bash
     # Auto-activate devenv when a devenv config exists in this or a parent directory.
     use_devenv_auto
+  '';
+
+  home.file.".config/direnv/direnv.toml".text = ''
+    [whitelist]
+    exact = [ "${config.home.homeDirectory}/.envrc" ]
   '';
 }
