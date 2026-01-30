@@ -10,17 +10,33 @@ This repository manages its configuration using Nix / Home Manager.
 #+begin_src
 .
 ├── flake.nix           # Nix flake entry point
+├── flake.lock
+├── AGENTS.md
+├── CLAUDE.md
+├── LICENSE
 ├── hosts/              # Host-specific configs
-│   ├── darwin/         
-│   ├── wsl/
-│   ├── x230/
-├── modules/            # Shared modules
 │   ├── darwin/
-│   └── nixos/
+│   │   ├── darwin-configuration.nix
+│   │   └── users/kyre/home-configuration.nix
+│   ├── wsl/
+│   │   ├── configuration.nix
+│   │   └── users/kyre/home-configuration.nix
+│   └── x230/
+│       ├── configuration.nix
+│       ├── hardware-configurations.nix
+│       └── users/kyre/home-configuration.nix
+├── modules/            # Shared modules
+│   ├── darwin/default.nix
+│   ├── nixos/default.nix
 │   └── home/           # Home Manager root
-│       ├── pkgs/       # Lists packages that do not require configuration (CLI, brew-nix)
-│       ├── programs/   # Lists packages that require configuration 
+│       ├── default.nix
+│       ├── pkgs/default.nix
+│       └── programs/   # Program configs
 ├── overlays/
+│   ├── karabiner-elements.nix
+│   ├── lm-studio.nix
+│   ├── rekordbox.nix
+│   └── unity-hub.nix
 └── inputs/
     ├── bun2nix/        # Bun package generation inputs
     └── skills/         # Agent skills flake (agent-skills-nix)
