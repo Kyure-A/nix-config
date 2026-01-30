@@ -29,10 +29,16 @@ in
       };
 
       nix = {
-        settings.experimental-features = [
-          "nix-command"
-          "flakes"
-        ];
+        settings = {
+          experimental-features = [
+            "nix-command"
+            "flakes"
+          ];
+          trusted-users = [
+            "root"
+            "kyre"
+          ];
+        };
         optimise = {
           automatic = true;
           dates = [ "00:00" ];

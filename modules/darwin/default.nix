@@ -48,10 +48,16 @@
   nixpkgs.config.allowUnfree = true;
 
   nix = {
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      trusted-users = [
+        "root"
+        "kyre"
+      ];
+    };
     gc = {
       automatic = true;
     };
