@@ -95,6 +95,8 @@
         AppleShowAllFiles = true;
         NSAutomaticCapitalizationEnabled = false;
         "com.apple.swipescrolldirection" = false;
+        NSStatusItemSpacing = 8;
+        NSStatusItemSelectionPadding = 8;
       };
 
       dock = {
