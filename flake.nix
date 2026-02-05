@@ -36,6 +36,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rustowl-flake.url = "github:mrcjkb/rustowl-flake";
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     skills-config.url = "path:./inputs/skills";
     emacs-d = {
       url = "github:Kyure-A/.emacs.d/master";
@@ -87,9 +91,21 @@
     in
     flake
     // {
-      formatter = {
-        x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
-        aarch64-darwin = inputs.nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
-      };
+      formatter =
+        let
+          mkFormatter =
+            system:
+            (inputs.treefmt-nix.lib.evalModule inputs.nixpkgs.legacyPackages.${system} {
+              modules = [
+                {
+                  programs.nixfmt.enable = true;
+                }
+              ];
+            }).config.build.wrapper;
+        in
+        {
+          x86_64-linux = mkFormatter "x86_64-linux";
+          aarch64-darwin = mkFormatter "aarch64-darwin";
+        };
     };
 }
