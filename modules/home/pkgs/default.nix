@@ -48,6 +48,7 @@ let
   homebrew = with pkgs.brewCasks; [
     alacritty
     alcom
+    codex-app
     crossover
     firefox
     ghostty
