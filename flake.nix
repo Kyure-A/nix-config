@@ -73,8 +73,8 @@
         inputs.llm-agents.overlays.default
         karabiner-elements
         lm-studio
-        unity-hub
         rekordbox
+        unity-hub
         inputs.rust-overlay.overlays.default
         inputs.fenix.overlays.default
         inputs.rustowl-flake.overlays.default
