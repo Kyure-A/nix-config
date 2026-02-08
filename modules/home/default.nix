@@ -5,8 +5,8 @@ let
 in
 {
   imports = programs ++ [
-    inputs.emacs-d.homeModules.${pkgs.system}.twist
-    inputs.skills-config.homeManagerModules.default
+    inputs.emacs.homeModules.${pkgs.system}.twist
+    inputs.agent-skills.homeManagerModules.default
   ];
   home.packages = import ./pkgs { inherit pkgs bun2nix; };
 }

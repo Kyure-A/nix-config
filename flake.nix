@@ -2,6 +2,7 @@
   description = "Kyure_A's NixOS Config";
 
   inputs = {
+    agent-skills.url = "path:./inputs/skills";
     blueprint = {
       url = "github:numtide/blueprint";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,7 +23,7 @@
       url = "github:nix-community/bun2nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    emacs-d = {
+    emacs = {
       url = "github:Kyure-A/.emacs.d/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -52,7 +53,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rustowl-flake.url = "github:mrcjkb/rustowl-flake";
-    skills-config.url = "path:./inputs/skills";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";

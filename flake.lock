@@ -2,8 +2,26 @@
   "nodes": {
     "agent-skills": {
       "inputs": {
-        "home-manager": "home-manager_2",
-        "nixpkgs": "nixpkgs_5"
+        "agent-skills": "agent-skills_2",
+        "anthropic": "anthropic",
+        "remotion": "remotion",
+        "ui-skills": "ui-skills",
+        "vercel": "vercel"
+      },
+      "locked": {
+        "path": "./inputs/skills",
+        "type": "path"
+      },
+      "original": {
+        "path": "./inputs/skills",
+        "type": "path"
+      },
+      "parent": []
+    },
+    "agent-skills_2": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs"
       },
       "locked": {
         "lastModified": 1770375875,
@@ -180,27 +198,8 @@
     },
     "emacs": {
       "inputs": {
-        "nixpkgs": "nixpkgs",
-        "nixpkgs-stable": "nixpkgs-stable"
-      },
-      "locked": {
-        "lastModified": 1766370686,
-        "narHash": "sha256-HZ1uIvsj/NTcvg6qzlHoZYKweQr0AT92puSnmeB6tuY=",
-        "owner": "nix-community",
-        "repo": "emacs-overlay",
-        "rev": "db25d925f0d299cb32c38eb0d0e30cfb285245ca",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "emacs-overlay",
-        "type": "github"
-      }
-    },
-    "emacs-d": {
-      "inputs": {
         "elpa": "elpa",
-        "emacs": "emacs",
+        "emacs": "emacs_2",
         "epkgs": "epkgs",
         "flake-utils": "flake-utils",
         "melpa": "melpa",
@@ -223,6 +222,25 @@
         "owner": "Kyure-A",
         "ref": "master",
         "repo": ".emacs.d",
+        "type": "github"
+      }
+    },
+    "emacs_2": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2",
+        "nixpkgs-stable": "nixpkgs-stable"
+      },
+      "locked": {
+        "lastModified": 1766370686,
+        "narHash": "sha256-HZ1uIvsj/NTcvg6qzlHoZYKweQr0AT92puSnmeB6tuY=",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "db25d925f0d299cb32c38eb0d0e30cfb285245ca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
         "type": "github"
       }
     },
@@ -413,28 +431,7 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1769289524,
-        "narHash": "sha256-6Cwtvzrw79cOk1lCzN2aKSVrpgSOSQoYhyMmhXXZjTA=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "2539eba97a6df237d75617c25cd2dbef92df3d5b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "ref": "master",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "home-manager_2": {
-      "inputs": {
-        "nixpkgs": [
-          "skills-config",
+          "agent-skills",
           "agent-skills",
           "nixpkgs"
         ]
@@ -449,6 +446,27 @@
       },
       "original": {
         "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-manager_2": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769289524,
+        "narHash": "sha256-6Cwtvzrw79cOk1lCzN2aKSVrpgSOSQoYhyMmhXXZjTA=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "2539eba97a6df237d75617c25cd2dbef92df3d5b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "master",
         "repo": "home-manager",
         "type": "github"
       }
@@ -549,11 +567,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1766070988,
-        "narHash": "sha256-G/WVghka6c4bAzMhTwT2vjLccg/awmHkdKSd2JrycLc=",
+        "lastModified": 1770197578,
+        "narHash": "sha256-AYqlWrX09+HvGs8zM6ebZ1pwUqjkfpnv8mewYwAo+iM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c6245e83d836d0433170a16eb185cefe0572f8b8",
+        "rev": "00c21e4c93d963c50d4c0c89bfa84ed6e0694df2",
         "type": "github"
       },
       "original": {
@@ -611,6 +629,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1766070988,
+        "narHash": "sha256-G/WVghka6c4bAzMhTwT2vjLccg/awmHkdKSd2JrycLc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c6245e83d836d0433170a16eb185cefe0572f8b8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1769323784,
         "narHash": "sha256-kn95sve6LaFPrR5RurgBvYpXINigwbbzSTauNVr4zgs=",
         "owner": "nixos",
@@ -624,7 +658,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1769092226,
         "narHash": "sha256-6h5sROT/3CTHvzPy9koKBmoCa2eJKh4fzQK8eYFEgl8=",
@@ -640,7 +674,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1744536153,
         "narHash": "sha256-awS2zRgF4uTwrOKwwiJcByDzDOdo3Q1rPZbiHQg/N38=",
@@ -652,22 +686,6 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_5": {
-      "locked": {
-        "lastModified": 1770197578,
-        "narHash": "sha256-AYqlWrX09+HvGs8zM6ebZ1pwUqjkfpnv8mewYwAo+iM=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "00c21e4c93d963c50d4c0c89bfa84ed6e0694df2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -721,20 +739,20 @@
     },
     "root": {
       "inputs": {
+        "agent-skills": "agent-skills",
         "blueprint": "blueprint",
         "brew-api": "brew-api",
         "brew-nix": "brew-nix",
         "bun2nix": "bun2nix",
-        "emacs-d": "emacs-d",
+        "emacs": "emacs",
         "fenix": "fenix",
-        "home-manager": "home-manager",
+        "home-manager": "home-manager_2",
         "llm-agents": "llm-agents",
         "nix-darwin": "nix-darwin",
         "nixos-wsl": "nixos-wsl",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "rust-overlay": "rust-overlay",
         "rustowl-flake": "rustowl-flake",
-        "skills-config": "skills-config",
         "treefmt-nix": "treefmt-nix_3"
       }
     },
@@ -777,7 +795,7 @@
     },
     "rust-overlay_2": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
         "lastModified": 1769136478,
@@ -813,7 +831,7 @@
       "inputs": {
         "flake-parts": "flake-parts_2",
         "git-hooks": "git-hooks",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "rust-overlay": "rust-overlay_2",
         "rustowl": "rustowl"
       },
@@ -830,24 +848,6 @@
         "repo": "rustowl-flake",
         "type": "github"
       }
-    },
-    "skills-config": {
-      "inputs": {
-        "agent-skills": "agent-skills",
-        "anthropic": "anthropic",
-        "remotion": "remotion",
-        "ui-skills": "ui-skills",
-        "vercel": "vercel"
-      },
-      "locked": {
-        "path": "./inputs/skills",
-        "type": "path"
-      },
-      "original": {
-        "path": "./inputs/skills",
-        "type": "path"
-      },
-      "parent": []
     },
     "systems": {
       "locked": {
