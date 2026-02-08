@@ -64,8 +64,8 @@
     let
       karabiner-elements = (import ./overlays/karabiner-elements.nix);
       lm-studio = (import ./overlays/lm-studio.nix);
-      unity-hub = (import ./overlays/unity-hub.nix);
       rekordbox = (import ./overlays/rekordbox.nix);
+      unity-hub = (import ./overlays/unity-hub.nix);
 
       overlays = [
         inputs.brew-nix.overlays.default
