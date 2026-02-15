@@ -11,8 +11,8 @@
       url = "github:vercel-labs/agent-skills";
       flake = false;
     };
-    remotion = {
-      url = "github:remotion-dev/skills";
+    find-skills = {
+      url = "github:vercel-labs/skills";
       flake = false;
     };
     ui-skills = {
@@ -31,7 +31,7 @@
       agent-skills,
       anthropic,
       vercel,
-      remotion,
+      find-skills,
       ...
     }:
     {
@@ -43,9 +43,9 @@
             inherit
               agent-skills
               anthropic
+              find-skills
               vercel
-              remotion
-              ;
+            ;
           }
         );
     };

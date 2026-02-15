@@ -4,7 +4,7 @@
   # personal,
   anthropic,
   vercel,
-  remotion,
+  find-skills,
   ...
 }:
 {
@@ -29,17 +29,17 @@
         path = vercel;
         subdir = "skills";
       };
-      remotion = {
-        path = remotion;
+      find-skills = {
+        path = find-skills;
         subdir = "skills";
       };
     };
     skills.enable = [
-      "frontend-design"
+      "doc-coauthoring"
+      "find-skills"
       "pdf"
       "pptx"
       "skill-creator"
-      "remotion"
     ];
     # skills.enableAll = [ "personal" ];
     targets = {
