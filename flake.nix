@@ -3,6 +3,7 @@
 
   inputs = {
     agent-skills.url = "path:./inputs/skills";
+    sheldon.url = "path:./inputs/sheldon";
     blueprint = {
       url = "github:numtide/blueprint";
       inputs.nixpkgs.follows = "nixpkgs";
