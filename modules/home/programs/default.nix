@@ -6,7 +6,6 @@ let
   emacs-twist = import ./emacs-twist;
   git = import ./git { inherit pkgs; };
   karabiner = import ./karabiner;
-  sheldon = import ./sheldon;
   starship = import ./starship;
   tmux = import ./tmux { inherit pkgs; };
   zsh = import ./zsh { inherit pkgs; };
@@ -15,7 +14,6 @@ let
     direnv
     emacs-twist
     git
-    sheldon
     starship
     tmux
     zsh

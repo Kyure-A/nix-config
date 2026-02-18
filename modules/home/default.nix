@@ -7,6 +7,7 @@ in
   imports = programs ++ [
     inputs.emacs.homeModules.${pkgs.system}.twist
     inputs.agent-skills.homeManagerModules.default
+    inputs.sheldon.homeManagerModules.default
   ];
   home.packages = import ./pkgs { inherit pkgs bun2nix; };
   home.file = {
