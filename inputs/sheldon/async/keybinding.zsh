@@ -1,4 +1,4 @@
-setxkbmap -layout us
+(( ${+commands[setxkbmap]} )) && setxkbmap -layout us
 bindkey -e # emacs mode
 bindkey '^[Oc' forward-word                     
 bindkey '^[Od' backward-word                     
