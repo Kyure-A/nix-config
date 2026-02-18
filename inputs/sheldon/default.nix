@@ -1,4 +1,14 @@
 {
+  anyframe,
+  fzf,
+  zsh-async,
+  zsh-completions,
+  zsh-history-substring-search,
+  zsh-syntax-highlighting,
+  agents-md-generator,
+  ...
+}:
+{
   home.file = {
     ".config/sheldon/async".source = ./async;
     ".config/sheldon/sync".source = ./sync;
@@ -23,7 +33,7 @@
           inline = "autoload -U add-zsh-hook";
         };
         anyframe = {
-          github = "mollifier/anyframe";
+          local = "${anyframe}";
         };
         colors = {
           inline = "autoload -U colors && zsh-defer colors";
@@ -32,7 +42,7 @@
           inline = "autoload -U compinit && zsh-defer compinit -C";
         };
         fzf = {
-          github = "junegunn/fzf";
+          local = "${fzf}";
         };
         predict = {
           inline = "autoload -U predict-on && predict-on";
@@ -46,18 +56,23 @@
           inline = "autoload -U zcalc";
         };
         zsh-async = {
-          github = "mafredri/zsh-async";
+          local = "${zsh-async}";
         };
         zsh-complations = {
-          github = "zsh-users/zsh-completions";
+          local = "${zsh-completions}";
           apply = [ "defer" ];
         };
         zsh-history-substring-search = {
-          github = "zsh-users/zsh-history-substring-search";
+          local = "${zsh-history-substring-search}";
           apply = [ "defer" ];
         };
         zsh-syntax-highlighting = {
-          github = "zsh-users/zsh-syntax-highlighting";
+          local = "${zsh-syntax-highlighting}";
+          apply = [ "defer" ];
+        };
+        agents-md-generator = {
+          local = "${agents-md-generator}";
+          use = [ "agents-md-seed.sh" ];
           apply = [ "defer" ];
         };
         zsh-terminfo = {

@@ -4,7 +4,7 @@
       "inputs": {
         "agent-skills": "agent-skills_2",
         "anthropic": "anthropic",
-        "remotion": "remotion",
+        "find-skills": "find-skills",
         "ui-skills": "ui-skills",
         "vercel": "vercel"
       },
@@ -24,11 +24,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1770375875,
-        "narHash": "sha256-0hwqMVbMKfKBNoOfDfgVusZWqYylTtEBYbc5K2lp7Ns=",
+        "lastModified": 1771126756,
+        "narHash": "sha256-0zemEeIavYjuSx+FhgVFalNPOv37juagQecuWI0EJCI=",
         "owner": "Kyure-A",
         "repo": "agent-skills-nix",
-        "rev": "0de0b1522651fbe86eb2d62369b5dc4c40c2170f",
+        "rev": "c866abf7af212299d23ade91cc1a1ae48c8bef8d",
         "type": "github"
       },
       "original": {
@@ -37,19 +37,51 @@
         "type": "github"
       }
     },
+    "agents-md-generator": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771231767,
+        "narHash": "sha256-6kZGIyhBX8eJ50kCQN7U0efmx0Of4TKMRodVHcrK29c=",
+        "owner": "nyosegawa",
+        "repo": "agents-md-generator",
+        "rev": "5af9bb6e3d57d556f0472c633ab2dc97ae76cfce",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nyosegawa",
+        "repo": "agents-md-generator",
+        "type": "github"
+      }
+    },
     "anthropic": {
       "flake": false,
       "locked": {
-        "lastModified": 1770171633,
-        "narHash": "sha256-8tANLG91vLbC30IFpEakPBN9bUjJJldpvX28w9e9y80=",
+        "lastModified": 1770412772,
+        "narHash": "sha256-9FGubcwHcGBJcKl02aJ+YsTMiwDOdgU/FHALjARG51c=",
         "owner": "anthropics",
         "repo": "skills",
-        "rev": "a5bcdd7e58cdff48566bf876f0a72a2008dcefbc",
+        "rev": "1ed29a03dc852d30fa6ef2ca53a67dc2c2c2c563",
         "type": "github"
       },
       "original": {
         "owner": "anthropics",
         "repo": "skills",
+        "type": "github"
+      }
+    },
+    "anyframe": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1500469189,
+        "narHash": "sha256-WaBaxxQzwpIlsfTgWGt8GSQin6nbm45mRvtW0VqociE=",
+        "owner": "mollifier",
+        "repo": "anyframe",
+        "rev": "598675303044df8e9d04722f3adff4f63a238922",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mollifier",
+        "repo": "anyframe",
         "type": "github"
       }
     },
@@ -281,6 +313,22 @@
         "type": "github"
       }
     },
+    "find-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771039040,
+        "narHash": "sha256-JidfLICAkXY1xEUSGcRZbS88x50cxyZcG9uRFASqOqI=",
+        "owner": "vercel-labs",
+        "repo": "skills",
+        "rev": "82dd76bda58bedde5ddbf8f86fe63a538db20c19",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vercel-labs",
+        "repo": "skills",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -383,6 +431,22 @@
         "type": "github"
       }
     },
+    "fzf": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771395656,
+        "narHash": "sha256-EUk6NK+nB1G3InWx87KzbTkp1Qu+nZXD5Mb7tefM6W0=",
+        "owner": "junegunn",
+        "repo": "fzf",
+        "rev": "69e9abdab4e7aea98437f40dbaeab56c7431be18",
+        "type": "github"
+      },
+      "original": {
+        "owner": "junegunn",
+        "repo": "fzf",
+        "type": "github"
+      }
+    },
     "git-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -437,11 +501,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770318660,
-        "narHash": "sha256-yFVde8QZK7Dc0Xa8eQDsmxLX4NJNfL1NKfctSyiQgMY=",
+        "lastModified": 1770586272,
+        "narHash": "sha256-Ucci8mu8QfxwzyfER2DQDbvW9t1BnTUJhBmY7ybralo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "471e6a065f9efed51488d7c51a9abbd387df91b8",
+        "rev": "b1f916ba052341edc1f80d4b2399f1092a4873ca",
         "type": "github"
       },
       "original": {
@@ -567,11 +631,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1770197578,
-        "narHash": "sha256-AYqlWrX09+HvGs8zM6ebZ1pwUqjkfpnv8mewYwAo+iM=",
+        "lastModified": 1770562336,
+        "narHash": "sha256-ub1gpAONMFsT/GU2hV6ZWJjur8rJ6kKxdm9IlCT0j84=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "00c21e4c93d963c50d4c0c89bfa84ed6e0694df2",
+        "rev": "d6c71932130818840fc8fe9509cf50be8c64634f",
         "type": "github"
       },
       "original": {
@@ -721,22 +785,6 @@
         "type": "github"
       }
     },
-    "remotion": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1770289517,
-        "narHash": "sha256-q3mri2ctEmPfVeMibWga++JhbDON3g2K1KayiheIofg=",
-        "owner": "remotion-dev",
-        "repo": "skills",
-        "rev": "e65ecec95f6782ffa057de4dc7c54628dd1e9924",
-        "type": "github"
-      },
-      "original": {
-        "owner": "remotion-dev",
-        "repo": "skills",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "agent-skills": "agent-skills",
@@ -753,6 +801,7 @@
         "nixpkgs": "nixpkgs_3",
         "rust-overlay": "rust-overlay",
         "rustowl-flake": "rustowl-flake",
+        "sheldon": "sheldon",
         "treefmt-nix": "treefmt-nix_3"
       }
     },
@@ -848,6 +897,26 @@
         "repo": "rustowl-flake",
         "type": "github"
       }
+    },
+    "sheldon": {
+      "inputs": {
+        "agents-md-generator": "agents-md-generator",
+        "anyframe": "anyframe",
+        "fzf": "fzf",
+        "zsh-async": "zsh-async",
+        "zsh-completions": "zsh-completions",
+        "zsh-history-substring-search": "zsh-history-substring-search",
+        "zsh-syntax-highlighting": "zsh-syntax-highlighting"
+      },
+      "locked": {
+        "path": "./inputs/sheldon",
+        "type": "path"
+      },
+      "original": {
+        "path": "./inputs/sheldon",
+        "type": "path"
+      },
+      "parent": []
     },
     "systems": {
       "locked": {
@@ -1018,6 +1087,70 @@
       "original": {
         "owner": "vercel-labs",
         "repo": "agent-skills",
+        "type": "github"
+      }
+    },
+    "zsh-async": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1672955751,
+        "narHash": "sha256-mkTmgSnfoZlTaOPhw0Y0yG1BkZv+oTo/eEisZZTN5nM=",
+        "owner": "mafredri",
+        "repo": "zsh-async",
+        "rev": "ee1d11b68c38dec24c22b1c51a45e8a815a79756",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mafredri",
+        "repo": "zsh-async",
+        "type": "github"
+      }
+    },
+    "zsh-completions": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771165768,
+        "narHash": "sha256-UqPDTL31hIYezi04whhRljnlPdLwxR/a2PtlXoBp0fM=",
+        "owner": "zsh-users",
+        "repo": "zsh-completions",
+        "rev": "8d93e4c1ee0c1a157d530847fee8277b6b4b6022",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zsh-users",
+        "repo": "zsh-completions",
+        "type": "github"
+      }
+    },
+    "zsh-history-substring-search": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768499095,
+        "narHash": "sha256-KHujL1/TM5R3m4uQh2nGVC98D6MOyCgQpyFf+8gjKR0=",
+        "owner": "zsh-users",
+        "repo": "zsh-history-substring-search",
+        "rev": "14c8d2e0ffaee98f2df9850b19944f32546fdea5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zsh-users",
+        "repo": "zsh-history-substring-search",
+        "type": "github"
+      }
+    },
+    "zsh-syntax-highlighting": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1770569380,
+        "narHash": "sha256-VMne38IQwqB4jwGUI2f3eEiSkT2ww7+G5ch7w+65GT0=",
+        "owner": "zsh-users",
+        "repo": "zsh-syntax-highlighting",
+        "rev": "1d85c692615a25fe2293bdd44b34c217d5d2bf04",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zsh-users",
+        "repo": "zsh-syntax-highlighting",
         "type": "github"
       }
     }

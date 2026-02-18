@@ -45,7 +45,7 @@
               anthropic
               find-skills
               vercel
-            ;
+              ;
           }
         );
     };
