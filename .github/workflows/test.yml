@@ -72,7 +72,7 @@ jobs:
 
       - name: Test nix fmt
         run: |
-          nix fmt ./ -- --check
+          nix fmt ./ -- --ci
 
   bun2nix-test:
     runs-on: ubuntu-latest
