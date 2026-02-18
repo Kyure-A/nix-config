@@ -43,6 +43,8 @@
         };
         fzf = {
           local = "${fzf}";
+          use = [ "shell/completion.zsh" "shell/key-bindings.zsh" ];
+          apply = [ "defer" ];
         };
         predict = {
           inline = "autoload -U predict-on && predict-on";
