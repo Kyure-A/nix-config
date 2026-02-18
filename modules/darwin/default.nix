@@ -87,6 +87,11 @@
           DSDontWriteNetworkStores = true; # DS_Store
           DSDontWriteUSBStores = true; # DS_Store
         };
+
+        "com.apple.screencapture" = {
+          location = "~/Pictures";
+          type = "png";
+        };
       };
 
       NSGlobalDomain = {
