@@ -58,7 +58,7 @@
         zsh-async = {
           local = "${zsh-async}";
         };
-        zsh-complations = {
+        zsh-completions = {
           local = "${zsh-completions}";
           apply = [ "defer" ];
         };
