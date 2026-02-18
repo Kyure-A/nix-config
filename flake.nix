@@ -97,11 +97,7 @@
           mkFormatter =
             system:
             (inputs.treefmt-nix.lib.evalModule inputs.nixpkgs.legacyPackages.${system} {
-              modules = [
-                {
-                  programs.nixfmt.enable = true;
-                }
-              ];
+              programs.nixfmt.enable = true;
             }).config.build.wrapper;
         in
         {
