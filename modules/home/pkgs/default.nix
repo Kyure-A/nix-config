@@ -14,6 +14,7 @@ let
     devenv
     docker-compose
     eza
+    fzf
     gcc
     gemini-cli
     ghq
