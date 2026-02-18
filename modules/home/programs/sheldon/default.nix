@@ -60,6 +60,11 @@
           github = "zsh-users/zsh-syntax-highlighting";
           apply = [ "defer" ];
         };
+        agents-md-generator = {
+          github = "nyosegawa/agents-md-generator";
+          use = [ "agents-md-seed.sh" ];
+          apply = [ "defer" ];
+        };
         zsh-terminfo = {
           inline = "zmodload zsh/terminfo";
         };

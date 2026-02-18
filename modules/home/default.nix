@@ -12,5 +12,6 @@ in
   home.file = {
     ".claude/CLAUDE.md".source = ./AGENTS.md;
     ".codex/AGENTS.md".source = ./AGENTS.md;
+    ".config/agents-md/template.md".source = ./AGENTS.md.template;
   };
 }
