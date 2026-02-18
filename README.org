@@ -39,6 +39,7 @@ This repository manages its configuration using Nix / Home Manager.
 │   └── unity-hub.nix
 └── inputs/
     ├── bun2nix/        # Bun package generation inputs
+    ├── sheldon/        # Zsh plugin flake (sheldon)
     └── skills/         # Agent skills flake (agent-skills-nix)
 #+end_src
 
