@@ -9,4 +9,8 @@ in
     inputs.agent-skills.homeManagerModules.default
   ];
   home.packages = import ./pkgs { inherit pkgs bun2nix; };
+  home.file = {
+    ".claude/CLAUDE.md".source = ./AGENTS.md;
+    ".codex/AGENTS.md".source = ./AGENTS.md;
+  };
 }
