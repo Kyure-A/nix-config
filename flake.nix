@@ -3,7 +3,6 @@
 
   inputs = {
     agent-skills.url = "path:./inputs/skills";
-    sheldon.url = "path:./inputs/sheldon";
     blueprint = {
       url = "github:numtide/blueprint";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -54,6 +53,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rustowl-flake.url = "github:mrcjkb/rustowl-flake";
+    sheldon.url = "path:./inputs/sheldon";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
