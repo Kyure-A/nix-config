@@ -1,10 +1,10 @@
 {
-  anyframe,
   fzf,
-  zsh-async,
   zsh-completions,
   zsh-history-substring-search,
-  zsh-syntax-highlighting,
+  fast-syntax-highlighting,
+  nix-zsh-completions,
+  zsh-you-should-use,
   agents-md-generator,
   ...
 }:
@@ -32,9 +32,6 @@
         add-zsh-hook = {
           inline = "autoload -U add-zsh-hook";
         };
-        anyframe = {
-          local = "${anyframe}";
-        };
         colors = {
           inline = "autoload -U colors && zsh-defer colors";
         };
@@ -43,33 +40,37 @@
         };
         fzf = {
           local = "${fzf}";
-          use = [ "shell/completion.zsh" "shell/key-bindings.zsh" ];
+          use = [
+            "shell/completion.zsh"
+            "shell/key-bindings.zsh"
+          ];
           apply = [ "defer" ];
         };
         predict = {
           inline = "autoload -U predict-on && predict-on";
         };
-        starship = {
-          inline = ''
-            eval "$(starship init zsh)"
-          '';
-        };
         zcalc = {
           inline = "autoload -U zcalc";
         };
-        zsh-async = {
-          local = "${zsh-async}";
-        };
         zsh-completions = {
-          local = "${zsh-completions}";
-          apply = [ "defer" ];
+          inline = "fpath+=${zsh-completions}/src";
         };
         zsh-history-substring-search = {
           local = "${zsh-history-substring-search}";
           apply = [ "defer" ];
         };
-        zsh-syntax-highlighting = {
-          local = "${zsh-syntax-highlighting}";
+        fast-syntax-highlighting = {
+          local = "${fast-syntax-highlighting}";
+          apply = [ "defer" ];
+        };
+        nix-zsh-completions = {
+          inline = "fpath+=${nix-zsh-completions}";
+        };
+        zoxide = {
+          inline = ''zsh-defer eval "$(zoxide init zsh --cmd cd)"'';
+        };
+        zsh-you-should-use = {
+          local = "${zsh-you-should-use}";
           apply = [ "defer" ];
         };
         agents-md-generator = {

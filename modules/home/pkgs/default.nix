@@ -38,6 +38,7 @@ let
     tmux
     vscode
     web-ext # mozilla
+    zoxide
     zsh-defer
   ];
 

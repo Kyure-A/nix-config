@@ -2,16 +2,8 @@
   description = "Sheldon Plugins";
 
   inputs = {
-    anyframe = {
-      url = "github:mollifier/anyframe";
-      flake = false;
-    };
     fzf = {
       url = "github:junegunn/fzf";
-      flake = false;
-    };
-    zsh-async = {
-      url = "github:mafredri/zsh-async";
       flake = false;
     };
     zsh-completions = {
@@ -22,8 +14,16 @@
       url = "github:zsh-users/zsh-history-substring-search";
       flake = false;
     };
-    zsh-syntax-highlighting = {
-      url = "github:zsh-users/zsh-syntax-highlighting";
+    fast-syntax-highlighting = {
+      url = "github:zdharma-continuum/fast-syntax-highlighting";
+      flake = false;
+    };
+    nix-zsh-completions = {
+      url = "github:nix-community/nix-zsh-completions";
+      flake = false;
+    };
+    zsh-you-should-use = {
+      url = "github:MichaelAquilina/zsh-you-should-use";
       flake = false;
     };
     agents-md-generator = {
@@ -35,12 +35,12 @@
   outputs =
     {
       self,
-      anyframe,
       fzf,
-      zsh-async,
       zsh-completions,
       zsh-history-substring-search,
-      zsh-syntax-highlighting,
+      fast-syntax-highlighting,
+      nix-zsh-completions,
+      zsh-you-should-use,
       agents-md-generator,
       ...
     }:
@@ -51,12 +51,12 @@
           args
           // {
             inherit
-              anyframe
               fzf
-              zsh-async
               zsh-completions
               zsh-history-substring-search
-              zsh-syntax-highlighting
+              fast-syntax-highlighting
+              nix-zsh-completions
+              zsh-you-should-use
               agents-md-generator
               ;
           }

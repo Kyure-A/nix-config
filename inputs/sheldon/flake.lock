@@ -16,73 +16,73 @@
         "type": "github"
       }
     },
-    "anyframe": {
+    "fast-syntax-highlighting": {
       "flake": false,
       "locked": {
-        "lastModified": 1500469189,
-        "narHash": "sha256-WaBaxxQzwpIlsfTgWGt8GSQin6nbm45mRvtW0VqociE=",
-        "owner": "mollifier",
-        "repo": "anyframe",
-        "rev": "598675303044df8e9d04722f3adff4f63a238922",
+        "lastModified": 1752660993,
+        "narHash": "sha256-ZihUL4JAVk9V+IELSakytlb24BvEEJ161CQEHZYYoSA=",
+        "owner": "zdharma-continuum",
+        "repo": "fast-syntax-highlighting",
+        "rev": "3d574ccf48804b10dca52625df13da5edae7f553",
         "type": "github"
       },
       "original": {
-        "owner": "mollifier",
-        "repo": "anyframe",
+        "owner": "zdharma-continuum",
+        "repo": "fast-syntax-highlighting",
         "type": "github"
       }
     },
     "fzf": {
       "flake": false,
       "locked": {
-        "lastModified": 1771395656,
-        "narHash": "sha256-EUk6NK+nB1G3InWx87KzbTkp1Qu+nZXD5Mb7tefM6W0=",
+        "lastModified": 1771428009,
+        "narHash": "sha256-yRd19Kx5u7vNZ3azFPCI2ait++vCxsa+t3ygJ6ug1i0=",
         "owner": "junegunn",
         "repo": "fzf",
-        "rev": "69e9abdab4e7aea98437f40dbaeab56c7431be18",
+        "rev": "4522868fc0d3d9a41a58250810e22949879f092f",
         "type": "github"
       },
       "original": {
         "owner": "junegunn",
         "repo": "fzf",
+        "type": "github"
+      }
+    },
+    "nix-zsh-completions": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1765577512,
+        "narHash": "sha256-ogDhANf4MpVZn5sWZymT0EIjDMTLSHRGzNjHsw/dX8o=",
+        "owner": "nix-community",
+        "repo": "nix-zsh-completions",
+        "rev": "d4ae06bedb9a353ac894862d1d83f60ab4e2ccce",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-zsh-completions",
         "type": "github"
       }
     },
     "root": {
       "inputs": {
         "agents-md-generator": "agents-md-generator",
-        "anyframe": "anyframe",
+        "fast-syntax-highlighting": "fast-syntax-highlighting",
         "fzf": "fzf",
-        "zsh-async": "zsh-async",
+        "nix-zsh-completions": "nix-zsh-completions",
         "zsh-completions": "zsh-completions",
         "zsh-history-substring-search": "zsh-history-substring-search",
-        "zsh-syntax-highlighting": "zsh-syntax-highlighting"
-      }
-    },
-    "zsh-async": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1672955751,
-        "narHash": "sha256-mkTmgSnfoZlTaOPhw0Y0yG1BkZv+oTo/eEisZZTN5nM=",
-        "owner": "mafredri",
-        "repo": "zsh-async",
-        "rev": "ee1d11b68c38dec24c22b1c51a45e8a815a79756",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mafredri",
-        "repo": "zsh-async",
-        "type": "github"
+        "zsh-you-should-use": "zsh-you-should-use"
       }
     },
     "zsh-completions": {
       "flake": false,
       "locked": {
-        "lastModified": 1771165768,
-        "narHash": "sha256-UqPDTL31hIYezi04whhRljnlPdLwxR/a2PtlXoBp0fM=",
+        "lastModified": 1771409300,
+        "narHash": "sha256-gSvuBYxe+L6ZdAViz4xyTkCGBKH1872bFdvBEAQYZKQ=",
         "owner": "zsh-users",
         "repo": "zsh-completions",
-        "rev": "8d93e4c1ee0c1a157d530847fee8277b6b4b6022",
+        "rev": "4c84ebad534bdac3d2061db69082960c50856538",
         "type": "github"
       },
       "original": {
@@ -107,19 +107,19 @@
         "type": "github"
       }
     },
-    "zsh-syntax-highlighting": {
+    "zsh-you-should-use": {
       "flake": false,
       "locked": {
-        "lastModified": 1770569380,
-        "narHash": "sha256-VMne38IQwqB4jwGUI2f3eEiSkT2ww7+G5ch7w+65GT0=",
-        "owner": "zsh-users",
-        "repo": "zsh-syntax-highlighting",
-        "rev": "1d85c692615a25fe2293bdd44b34c217d5d2bf04",
+        "lastModified": 1771428101,
+        "narHash": "sha256-a/DNVxD55Bh6AmSh5C4z4JpZM5xUiQgoaFoDgYPQsbo=",
+        "owner": "MichaelAquilina",
+        "repo": "zsh-you-should-use",
+        "rev": "ff371d6a11b653e1fa8dda4e61c896c78de26bfa",
         "type": "github"
       },
       "original": {
-        "owner": "zsh-users",
-        "repo": "zsh-syntax-highlighting",
+        "owner": "MichaelAquilina",
+        "repo": "zsh-you-should-use",
         "type": "github"
       }
     }
