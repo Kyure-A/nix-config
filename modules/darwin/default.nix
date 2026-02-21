@@ -37,6 +37,7 @@
       Amphetamine = 937984704;
       DaisyDisk = 411643860;
       GoodNotes = 1444383602;
+      Klack = 6446206067;
       Runcat = 1429033973;
     };
   };

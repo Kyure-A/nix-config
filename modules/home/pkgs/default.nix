@@ -50,6 +50,7 @@ let
   homebrew = with pkgs.brewCasks; [
     alacritty
     alcom
+    alcove
     antigravity
     codex-app
     crossover
