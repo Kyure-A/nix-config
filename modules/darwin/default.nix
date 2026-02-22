@@ -16,6 +16,7 @@
       (import ../../overlays/karabiner-elements.nix)
       (import ../../overlays/lm-studio.nix)
       (import ../../overlays/unity-hub.nix)
+      (import ../../overlays/spotify.nix)
       (import ../../overlays/rekordbox.nix)
       inputs.rust-overlay.overlays.default
       inputs.fenix.overlays.default
