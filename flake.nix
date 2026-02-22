@@ -66,6 +66,7 @@
       karabiner-elements = (import ./overlays/karabiner-elements.nix);
       lm-studio = (import ./overlays/lm-studio.nix);
       rekordbox = (import ./overlays/rekordbox.nix);
+      spotify = (import ./overlays/spotify.nix);
       unity-hub = (import ./overlays/unity-hub.nix);
 
       overlays = [
@@ -75,6 +76,7 @@
         karabiner-elements
         lm-studio
         rekordbox
+        spotify
         unity-hub
         inputs.rust-overlay.overlays.default
         inputs.fenix.overlays.default

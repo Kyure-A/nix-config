@@ -63,6 +63,7 @@ let
     reaper
     rekordbox
     rustdesk
+    spotify
     unity-hub
   ];
 
