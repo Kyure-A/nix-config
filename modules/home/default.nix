@@ -5,7 +5,7 @@ let
 in
 {
   imports = programs ++ [
-    inputs.emacs.homeModules.${pkgs.system}.twist
+    inputs.emacs.homeModules.twist
     inputs.agent-skills.homeManagerModules.default
     inputs.sheldon.homeManagerModules.default
   ];
