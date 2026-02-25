@@ -25,6 +25,7 @@
     };
     emacs = {
       url = "github:Kyure-A/.emacs.d/master";
+      inputs.blueprint.follows = "blueprint";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     fenix = {
