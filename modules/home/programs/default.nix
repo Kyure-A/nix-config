@@ -3,6 +3,7 @@ let
   alacritty = import ./alacritty;
   copilot-language-server = import ./copilot-language-server { inherit pkgs; };
   ghostty = import ./ghostty;
+  glide = import ./glide;
   direnv = import ./direnv;
   emacs-twist = import ./emacs-twist;
   git = import ./git { inherit pkgs; };
@@ -23,6 +24,7 @@ let
     if pkgs.stdenv.isDarwin then
       [
         alacritty
+        glide
         ghostty
         karabiner
       ]

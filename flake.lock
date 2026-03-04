@@ -476,6 +476,27 @@
         "type": "github"
       }
     },
+    "glide": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772644825,
+        "narHash": "sha256-YEDZI1G9rcXvhfqT/70LFmejhQBq7mDI8lqJ20ebtDo=",
+        "owner": "Kyure-A",
+        "repo": "glide",
+        "rev": "b30e376a14948f68cd26ad59bd6ddc3103fbdb29",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kyure-A",
+        "ref": "pip",
+        "repo": "glide",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -794,6 +815,7 @@
         "bun2nix": "bun2nix",
         "emacs": "emacs",
         "fenix": "fenix",
+        "glide": "glide",
         "home-manager": "home-manager_2",
         "llm-agents": "llm-agents",
         "nix-darwin": "nix-darwin",

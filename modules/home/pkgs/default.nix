@@ -1,4 +1,4 @@
-{ pkgs, bun2nix }:
+{ pkgs, bun2nix, glidePkg ? null }:
 with pkgs;
 let
   bun2nixPkgs = bun2nix;
@@ -61,7 +61,6 @@ let
     postman
     raycast
     reaper
-    rekordbox
     rustdesk
     spotify
     unity-hub
@@ -72,6 +71,7 @@ let
     mas
     pinentry_mac
   ]
+  ++ lib.optionals (glidePkg != null) [ glidePkg ]
   ++ homebrew;
 in
 common ++ lib.optionals (!stdenv.isDarwin) nonDarwin ++ lib.optionals stdenv.isDarwin darwin
