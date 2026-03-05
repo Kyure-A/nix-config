@@ -102,11 +102,13 @@
         AppleShowAllFiles = true;
         NSAutomaticCapitalizationEnabled = false;
         "com.apple.swipescrolldirection" = false;
+        _HIHideMenuBar = false;
         NSStatusItemSpacing = 8;
         NSStatusItemSelectionPadding = 8;
       };
 
       dock = {
+        autohide = true;
         mineffect = "scale";
         minimize-to-application = true;
       };
