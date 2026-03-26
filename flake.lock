@@ -229,11 +229,11 @@
         "twist": "twist"
       },
       "locked": {
-        "lastModified": 1773083771,
-        "narHash": "sha256-sEnjVOpUOAiinivECiyaJq+smr+Lc2Zyk26Fke4sX1o=",
+        "lastModified": 1774532980,
+        "narHash": "sha256-WmjivCF9+rZp6pmhxa/bhMlwrqGAQMZhcSMII3KWWmE=",
         "owner": "Kyure-A",
         "repo": ".emacs.d",
-        "rev": "1cb76df19215e08f34553c48c0af26f749b0400b",
+        "rev": "64d82d0e9cd32d261f7273b9e30589c6a13eabed",
         "type": "github"
       },
       "original": {
