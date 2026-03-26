@@ -34,13 +34,6 @@
     extraSpecialArgs = { inherit inputs pkgs; };
   };
 
-  programs.emacs-twist = {
-    enable = true;
-    emacsclient.enable = true;
-    createInitFile = true;
-    createManifestFile = true;
-  };
-
   system.primaryUser = "kyre";
 
   homebrew = {
