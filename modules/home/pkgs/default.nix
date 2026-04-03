@@ -1,4 +1,8 @@
-{ pkgs, bun2nix, glidePkg ? null }:
+{
+  pkgs,
+  bun2nix,
+  glidePkg ? null,
+}:
 with pkgs;
 let
   bun2nixPkgs = bun2nix;
@@ -53,6 +57,8 @@ let
     alcove
     antigravity
     codex-app
+    pkgs."codex-switcher"
+    #    codexbar
     crossover
     firefox
     ghostty

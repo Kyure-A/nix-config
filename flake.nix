@@ -68,6 +68,7 @@
   outputs =
     inputs:
     let
+      codexSwitcher = import ./overlays/codex-switcher.nix;
       karabiner-elements = (import ./overlays/karabiner-elements.nix);
       lm-studio = (import ./overlays/lm-studio.nix);
       rekordbox = (import ./overlays/rekordbox.nix);
@@ -78,6 +79,7 @@
         inputs.brew-nix.overlays.default
         inputs.bun2nix.overlays.default
         inputs.llm-agents.overlays.default
+        codexSwitcher
         karabiner-elements
         lm-studio
         rekordbox
