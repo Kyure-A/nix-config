@@ -17,6 +17,7 @@
       inputs.brew-nix.overlays.default
       inputs.bun2nix.overlays.default
       inputs.llm-agents.overlays.default
+      (import ../../overlays/codex-switcher.nix)
       (import ../../overlays/karabiner-elements.nix)
       (import ../../overlays/lm-studio.nix)
       (import ../../overlays/unity-hub.nix)
@@ -52,6 +53,8 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   nix = {
     settings = {
