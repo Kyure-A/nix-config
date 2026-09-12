@@ -5,7 +5,6 @@
   fast-syntax-highlighting,
   nix-zsh-completions,
   zsh-you-should-use,
-  agents-md-generator,
   ...
 }:
 {
@@ -71,11 +70,6 @@
         };
         zsh-you-should-use = {
           local = "${zsh-you-should-use}";
-          apply = [ "defer" ];
-        };
-        agents-md-generator = {
-          local = "${agents-md-generator}";
-          use = [ "agents-md-seed.sh" ];
           apply = [ "defer" ];
         };
         zsh-terminfo = {

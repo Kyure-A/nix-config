@@ -1,9 +1,7 @@
 {
   lib,
   agent-skills,
-  # personal,
   anthropic,
-  vercel,
   find-skills,
   natural-japanese,
   ...
@@ -19,15 +17,8 @@
   programs.agent-skills = {
     enable = true;
     sources = {
-      # personal = {
-      #   path = personal;
-      # };
       anthropic = {
         path = anthropic;
-        subdir = "skills";
-      };
-      vercel = {
-        path = vercel;
         subdir = "skills";
       };
       find-skills = {
@@ -39,15 +30,42 @@
         subdir = "skills";
       };
     };
-    skills.enable = [
-      "doc-coauthoring"
-      "find-skills"
-      "natural-japanese"
-      "pdf"
-      "pptx"
-      "skill-creator"
-    ];
-    # skills.enableAll = [ "personal" ];
+    skills.explicit = {
+      doc-coauthoring = {
+        from = "anthropic";
+        transform = _: builtins.readFile ./overrides/doc-coauthoring/SKILL.md;
+      };
+      find-skills = {
+        from = "find-skills";
+        transform = _: builtins.readFile ./overrides/find-skills/SKILL.md;
+      };
+      natural-japanese = {
+        from = "natural-japanese";
+        transform = _: builtins.readFile ./overrides/natural-japanese/SKILL.md;
+      };
+      # Codex supplies these workflows through its built-ins and plugins.
+      pdf = {
+        from = "anthropic";
+        agents = [
+          "claude"
+          "dsh"
+        ];
+      };
+      pptx = {
+        from = "anthropic";
+        agents = [
+          "claude"
+          "dsh"
+        ];
+      };
+      skill-creator = {
+        from = "anthropic";
+        agents = [
+          "claude"
+          "dsh"
+        ];
+      };
+    };
     # "link" manages only the bundle's own entries via home.file, so skills
     # installed into the same directories by other tools (e.g. the self
     # repository's skills-install) are left untouched. copy-tree/symlink-tree
@@ -61,8 +79,8 @@
         dest = ".claude/skills";
         structure = "link";
       };
-      pi = {
-        dest = ".pi/agent/skills";
+      dsh = {
+        dest = ".dsh/skills";
         structure = "link";
       };
     };

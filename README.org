@@ -76,3 +76,41 @@ in inputs/bun2nix/
 #+begin_src shell
  nix fmt ./
 #+end_src
+
+** DSH
+
+DSH replaces Pi as the configured personal harness. Its CLI and production
+dependencies are pinned under =inputs/dsh/=; the Home Manager module is
+=modules/home/programs/dsh/=. This installs the official Web interface, not the
+unreleased upstream Desktop application.
+
+On macOS, open =DSH Web.app= from Home Manager Apps or run =dsh-web=. The user
+LaunchAgent serves the authenticated interface on =127.0.0.1:3080=. The launcher
+opens its current authenticated URL without exposing its token in command-line
+arguments. For one-shot terminal tasks, use =dsh --profile headless "task"=.
+
+The default model is local Ollama Qwen3.8 27B. Huihui Qwen3.6 and Venice's Qwen
+3.6 Plus remain selectable. The =Blender= agent preset connects the existing
+Blender MCP only for clothing/scene work; normal sessions avoid those extra
+tool definitions. Use a new =Chat (no tools)= session for Venice's E2EE model.
+Preset directories must be real directories with managed files: DSH does not
+discover directory symlinks.
+
+The declarative base is =~/.dsh/cordis.patch.yml=. The UI can save model choices
+and overrides in writable =~/.dsh/settings.yaml=. Shared personal Skills come
+from the private =self= repository via =~/.agents/skills=; external Skills and
+global =AGENTS.md= come from this repository. There is no second DSH copy of
+the shared Skills.
+
+The launcher uses =VENICE_API_KEY= if supplied, otherwise reads the existing
+=~/.pi/agent/auth.json= at startup. It does not copy credentials into Nix or
+DSH settings. Keep that credential file and the old Pi session history until
+deliberately migrating their storage. Pi extension code is not loaded by DSH.
+DSH telemetry and supplementary LLM title generation are disabled.
+
+Updating DSH requires updating =source.json=, the published production-only
+=package.json=, =package-lock.json=, and =npmDepsHash= together. The bounded
+Venice payload patch preserves the two existing model contracts; its insertion
+assertion fails on upstream drift. Validate it with
+=node inputs/dsh/venice-compat.test.mjs=, build the package/system, and check a
+real model request before switching.

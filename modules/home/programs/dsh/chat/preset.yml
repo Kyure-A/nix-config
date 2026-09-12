@@ -1,0 +1,3 @@
+name: Chat (no tools)
+description: Text conversation for models without function calling, including Venice E2EE.
+order: 20

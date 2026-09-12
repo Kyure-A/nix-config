@@ -65,7 +65,6 @@ let
     firefox
     ghostty
     orbstack
-    pi-gui
     raycast
     #rustdesk
     spotify

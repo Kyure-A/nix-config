@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "agents-md-generator": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1771231767,
-        "narHash": "sha256-6kZGIyhBX8eJ50kCQN7U0efmx0Of4TKMRodVHcrK29c=",
-        "owner": "nyosegawa",
-        "repo": "agents-md-generator",
-        "rev": "5af9bb6e3d57d556f0472c633ab2dc97ae76cfce",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nyosegawa",
-        "repo": "agents-md-generator",
-        "type": "github"
-      }
-    },
     "fast-syntax-highlighting": {
       "flake": false,
       "locked": {
@@ -66,7 +50,6 @@
     },
     "root": {
       "inputs": {
-        "agents-md-generator": "agents-md-generator",
         "fast-syntax-highlighting": "fast-syntax-highlighting",
         "fzf": "fzf",
         "nix-zsh-completions": "nix-zsh-completions",

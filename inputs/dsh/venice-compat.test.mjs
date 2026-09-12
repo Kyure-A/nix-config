@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import { venicePayload } from './venice-compat.mjs';
+const initial = {model:'qwen-3-6-plus', messages:[{role:'user',content:'x'}], tools:[{type:'function'}], venice_parameters:{include_venice_system_prompt:false}};
+const original = structuredClone(initial);
+const qwen = venicePayload({provider:'venice'}, {id:'qwen-3-6-plus'}, initial);
+assert.equal(qwen.venice_parameters.disable_thinking,true);
+assert.equal(qwen.venice_parameters.include_venice_system_prompt,false);
+assert.deepEqual(qwen.tools,initial.tools);
+assert.deepEqual(initial,original);
+assert.equal(venicePayload({provider:'ollama'}, {id:'qwen-3-6-plus'}, initial),initial);
+assert.equal(venicePayload({provider:'venice'}, {id:'some-other-model'}, initial),initial);
+const e2ee = venicePayload({provider:'venice'}, {id:'e2ee-qwen3-6-35b-a3b-uncensored-p'}, {...initial,tool_choice:'auto',parallel_tool_calls:true});
+assert.ok(!('tools' in e2ee));assert.ok(!('tool_choice' in e2ee));assert.ok(!('parallel_tool_calls' in e2ee));
+assert.deepEqual(e2ee.messages,initial.messages);
+console.log('Venice payload fixtures passed (scope, body preservation, tool removal).');

@@ -56,7 +56,6 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    pi-config.url = "github:Kyure-A/pi-config";
     nur-packages = {
       url = "github:Kyure-A/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -110,7 +109,6 @@
         };
       };
       alcove = (import ./overlays/alcove.nix);
-      pi-gui = import ./overlays/pi-gui.nix { inherit (inputs) brew-nix; };
       spotify = (import ./overlays/spotify.nix);
       unity-hub = (import ./overlays/unity-hub.nix);
 
@@ -122,7 +120,6 @@
         emacs-git-patches
         node-packages
         alcove
-        pi-gui
         spotify
         unity-hub
         inputs.rust-overlay.overlays.default

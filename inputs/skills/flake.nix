@@ -7,10 +7,6 @@
       url = "github:anthropics/skills";
       flake = false;
     };
-    vercel = {
-      url = "github:vercel-labs/agent-skills";
-      flake = false;
-    };
     find-skills = {
       url = "github:vercel-labs/skills";
       flake = false;
@@ -19,14 +15,6 @@
       url = "github:coji/natural-japanese";
       flake = false;
     };
-    ui-skills = {
-      url = "github:ibelick/ui-skills";
-      flake = false;
-    };
-    # personal = {
-    #   url = "github:Kyure-A/skills-private";
-    #   flake = false;
-    # };
   };
 
   outputs =
@@ -34,7 +22,6 @@
       self,
       agent-skills,
       anthropic,
-      vercel,
       find-skills,
       natural-japanese,
       ...
@@ -50,7 +37,6 @@
               anthropic
               find-skills
               natural-japanese
-              vercel
               ;
           }
         );

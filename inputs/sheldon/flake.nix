@@ -26,10 +26,6 @@
       url = "github:MichaelAquilina/zsh-you-should-use";
       flake = false;
     };
-    agents-md-generator = {
-      url = "github:nyosegawa/agents-md-generator";
-      flake = false;
-    };
   };
 
   outputs =
@@ -41,7 +37,6 @@
       fast-syntax-highlighting,
       nix-zsh-completions,
       zsh-you-should-use,
-      agents-md-generator,
       ...
     }:
     {
@@ -57,7 +52,6 @@
               fast-syntax-highlighting
               nix-zsh-completions
               zsh-you-should-use
-              agents-md-generator
               ;
           }
         );

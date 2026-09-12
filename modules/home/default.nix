@@ -20,7 +20,7 @@ in
   imports = programs ++ [
     inputs.emacs.homeModules.twist
     inputs.agent-skills.homeManagerModules.default
-    inputs.pi-config.homeManagerModules.default
+    ./programs/dsh
     inputs.sheldon.homeManagerModules.default
   ];
   home.packages = import ./pkgs {
@@ -33,7 +33,6 @@ in
   home.file = {
     ".claude/CLAUDE.md".source = ./AGENTS.md;
     ".codex/AGENTS.md".source = ./AGENTS.md;
-    ".config/agents-md/template.md".source = ./AGENTS.md.template;
   };
 
   programs.nh = {

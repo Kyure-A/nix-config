@@ -1,36 +1,17 @@
 # Nix Config
 
-Kyure_A's personal NixOS + nix-darwin dotfiles managed via **Nix Flake** and **Home Manager**.
+Personal NixOS and nix-darwin configuration using Nix Flakes and Home Manager.
 
-## Quick Reference
+- Read `README.org` for setup and per-host switch commands.
+- The main branch is `master`; use Conventional Commits.
+- Targets: `darwin` is `aarch64-darwin`; `wsl` and `x230` are `x86_64-linux`.
+- Format changed Nix files with `nix fmt <paths>`.
 
-See `README.org` for full documentation and per-host setup notes.
+## Agent Skills
 
-## Git Workflow
+Skills are managed by the local `inputs/skills/` flake, imported through `modules/home/default.nix`.
 
-- **Main branch**: `master`
-- This repository uses Conventional Commits for its commit rules.
-
-## Agent Skills (agent-skills-nix)
-
-Skills are configured via the local flake in `inputs/skills/`.
-
-- **Configuration**: `inputs/skills/flake.nix`, `inputs/skills/default.nix`
-- **Home Manager import**: `modules/home/default.nix`
-
-### Adding a new external skill
-
-1. Add a flake input in `inputs/skills/flake.nix`.
-2. Register the source in `inputs/skills/default.nix` under `programs.agent-skills.sources`.
-3. Enable the skill in `programs.agent-skills.skills.enable`.
-4. Rebuild using the appropriate switch command (see Core Commands).
-
-### Current skills
-
-Enabled in `inputs/skills/default.nix`
-
-## System Targets
-
-- **darwin**: `aarch64-darwin`
-- **wsl**: `x86_64-linux`
-- **x230**: `x86_64-linux`
+1. Add an external source input in `inputs/skills/flake.nix`.
+2. Register it under `programs.agent-skills.sources` in `inputs/skills/default.nix`.
+3. Select skills through `skills.explicit`; use `agents` for target-specific distribution and `transform` for local entrypoint overrides.
+4. Validate and build the affected bundles before applying the relevant host configuration.
