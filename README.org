@@ -92,7 +92,11 @@ arguments. For one-shot terminal tasks, use =dsh --profile headless "task"=.
 The default model is local Ollama Qwen3.8 27B. Huihui Qwen3.6 and Venice's Qwen
 3.6 Plus remain selectable. The =Blender= agent preset connects the existing
 Blender MCP only for clothing/scene work; normal sessions avoid those extra
-tool definitions. Use a new =Chat (no tools)= session for Venice's E2EE model.
+tool definitions. Use a new =Chat (no tools)= session for Venice's Gemma 4 26B TEE model.
+Venice lists the previous Qwen 35B model as retired in its September 9, 2026
+changelog. DSH uses the
+standard API route: an =e2ee-*= model ID alone does not enable client-side
+end-to-end encryption.
 Preset directories must be real directories with managed files: DSH does not
 discover directory symlinks.
 

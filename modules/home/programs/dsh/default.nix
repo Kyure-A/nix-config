@@ -77,10 +77,10 @@ let
               reasoningEfforts = false;
             }
             {
-              id = "e2ee-qwen3-6-35b-a3b-uncensored-p";
-              name = "Qwen3.6 35B E2EE (Chat preset only)";
+              id = "e2ee-gemma-4-26b-a4b-uncensored-p";
+              name = "Gemma 4 26B TEE (Chat preset only)";
               input = [ "text" ];
-              contextWindow = 128000;
+              contextWindow = 64000;
               maxTokens = 4096;
               reasoningEfforts = false;
             }

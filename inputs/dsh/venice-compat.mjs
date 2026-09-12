@@ -10,7 +10,7 @@ export function venicePayload(profile, model, payload) {
       },
     };
   }
-  if (model.id === 'e2ee-qwen3-6-35b-a3b-uncensored-p') {
+  if (model.id === 'e2ee-gemma-4-26b-a4b-uncensored-p') {
     const { tools, tool_choice, parallel_tool_calls, ...textOnly } = payload;
     return textOnly;
   }
