@@ -1,8 +1,0 @@
-- id: persona
-  name: '@deepseek-ai/dsh-persona'
-  config:
-    prefix: You are a helpful assistant. This conversation has no tools.
-    complete: true
-    includeRuntimeContext: false
-- id: no-tools
-  name: ./no-tools.mjs

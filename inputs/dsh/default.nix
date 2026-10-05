@@ -24,10 +24,15 @@ buildNpmPackage {
   inherit src;
   nodejs = nodejs_24;
   npmDepsFetcherVersion = 2;
-  npmDepsHash = "sha256-nggwwc7suTjxcfKe3eb6ITKnl59o+gEy6X83BpmyjxY=";
+  npmDepsHash = "sha256-QvK0KH0w9p1QriEikHTU/Mt6n79jOAMUSsffGJrrkCo=";
   dontNpmBuild = true;
   nativeBuildInputs = [ makeWrapper ];
   postInstall = ''
+    # The wrapper exposes Node internals directly. Avoid the native addon's
+    # V8 instruction probe, which does not match Nix's Darwin arm64 build.
+    substituteInPlace \
+      $out/lib/node_modules/@deepseek-ai/dsh/node_modules/node-addon-require-builtin/lib/index.js \
+      --replace-fail 'return api.requireBuiltin(moduleId);' 'return require(moduleId);'
     node ${./patch-venice.mjs} \
       $out/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-llm-pi-ai/lib/index.js \
       ${./venice-compat.mjs}

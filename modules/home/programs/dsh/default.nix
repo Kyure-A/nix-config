@@ -7,6 +7,7 @@
 let
   rawDsh = pkgs.callPackage ../../../../inputs/dsh { };
   yaml = pkgs.formats.yaml { };
+  json = pkgs.formats.json { };
   dsh = pkgs.writeShellScriptBin "dsh" ''
     exec ${lib.getExe pkgs.python3} ${./launch.py} ${lib.getExe rawDsh} "$@"
   '';
@@ -30,12 +31,13 @@ let
       high = "high";
     };
   };
-  patch = yaml.generate "dsh-cordis.patch.yml" [
+  defaults = yaml.generate "dsh-defaults.patch.yml" [
     {
       id = "agent-default-model";
       config = {
         provider = "ollama";
         inherit model;
+        reasoningEffort = "medium";
       };
     }
     {
@@ -88,6 +90,8 @@ let
         };
       };
     }
+  ];
+  patch = yaml.generate "dsh-cordis.patch.yml" [
     {
       id = "session-telemetry-otel";
       disabled = true;
@@ -116,46 +120,86 @@ let
       };
     }
   ];
-  # Use the pinned upstream coding preset and connect Blender only for a
-  # Blender session, avoiding 28 extra tool schemas in every local request.
-  blenderPreset = pkgs.runCommand "dsh-blender-preset" { } ''
-    mkdir -p $out
-    cp ${rawDsh}/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-agent-presets/presets/standard/agent.cordis.yml $out/agent.cordis.yml
-    chmod u+w $out/agent.cordis.yml
-    # Append sequence items inside the existing YAML document.
-    sed '/^%YAML /d; /^---$/d' ${blenderTools} >> $out/agent.cordis.yml
-    cat > $out/preset.yml <<'YAML'
-    name: Blender
-    description: Clothing creation, scene inspection, and Blender automation with the shared project skills.
-    order: 10
-    YAML
-  '';
-  initialSettings = yaml.generate "dsh-initial-settings.yaml" {
-    agent-default-model = {
-      provider = "ollama";
-      inherit model;
-      reasoningEffort = "medium";
-    };
+  chatPreset = yaml.generate "dsh-chat-preset.patch.yml" [
+    {
+      insert = [
+        {
+          id = "preset-chat";
+          name = "@deepseek-ai/dsh-agent-preset";
+          disabled = false;
+          config = {
+            id = "chat";
+            name = "Chat (no tools)";
+            description = "Text conversation for models without function calling, including Venice E2EE.";
+            order = 20;
+            plugins = [
+              {
+                id = "persona";
+                name = "@deepseek-ai/dsh-persona";
+                config = {
+                  prefix = "You are a helpful assistant. This conversation has no tools.";
+                  complete = true;
+                  includeRuntimeContext = false;
+                };
+              }
+              {
+                id = "no-tools";
+                name = "${./chat/no-tools.mjs}";
+              }
+            ];
+          };
+        }
+      ];
+    }
+  ];
+  # Bundle defaults inherit below each writable profile patch. A home-level
+  # provider/model override would outrank and prevent settings edits in DSH 0.2.
+  defaultsManifest = json.generate "dsh-defaults-package.json" {
+    name = "@local/dsh-defaults";
+    version = "0.2.0";
+    private = true;
+    peerDependencies."@deepseek-ai/dsh" = "0.2.0-rc.2";
+    dsh.bundle.patch = [
+      "./defaults.patch.yml"
+      "./chat.patch.yml"
+    ]
+    ++ lib.optionals pkgs.stdenv.isDarwin [ "./blender.patch.yml" ];
   };
+  defaultsBundle = pkgs.runCommand "dsh-defaults-bundle" { } ''
+    mkdir -p $out
+    cp ${defaultsManifest} $out/package.json
+    cp ${defaults} $out/defaults.patch.yml
+    ${lib.getExe pkgs.python3} - ${chatPreset} $out/chat.patch.yml <<'PY'
+    from pathlib import Path
+    import sys
+    source = Path(sys.argv[1]).read_text()
+    assert source.count("disabled: false") == 1, "Review the Chat preset declaration."
+    source = source.replace("disabled: false", "disabled: !!js \"ctx.get('profileContext')?.name !== 'web'\"")
+    Path(sys.argv[2]).write_text(source)
+    PY
+    ${lib.optionalString pkgs.stdenv.isDarwin ''
+      ${lib.getExe pkgs.python3} ${./make-blender-preset.py} \
+        ${rawDsh}/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-web-app/presets/standard.patch.yml \
+        ${blenderTools} $out/blender.patch.yml
+    ''}
+  '';
   web = pkgs.writeShellApplication {
     name = "dsh-web";
     runtimeInputs = [
       dsh
-      pkgs.curl
-      pkgs.coreutils
+      pkgs.python3
     ];
     text =
       if pkgs.stdenv.isDarwin then
         ''
-          /bin/launchctl kickstart "gui/$(/usr/bin/id -u)/org.nix-community.home.dsh-web"
-          for _attempt in $(seq 1 60); do
-            if curl --silent --output /dev/null http://127.0.0.1:3080/; then
-              exec /usr/bin/osascript -l JavaScript ${./open-web.js} ${lib.escapeShellArg "${config.home.homeDirectory}/.local/state/dsh/web.log"}
-            fi
-            sleep 1
-          done
-          echo "DSH did not become ready. Check ~/.local/state/dsh/web.log." >&2
-          exit 1
+          domain="gui/$(/usr/bin/id -u)"
+          service="$domain/org.nix-community.home.dsh-web"
+          if ! /bin/launchctl print "$service" >/dev/null 2>&1; then
+            /bin/launchctl bootstrap "$domain" ${lib.escapeShellArg "${config.home.homeDirectory}/Library/LaunchAgents/org.nix-community.home.dsh-web.plist"}
+          fi
+          /bin/launchctl kickstart "$service"
+          exec ${lib.getExe pkgs.python3} ${./open-web.py} \
+            ${lib.escapeShellArg "${config.home.homeDirectory}/.local/state/dsh/web.log"} ${./open-web.js}
         ''
       else
         ''
@@ -188,14 +232,7 @@ in
   home.file = {
     ".dsh/AGENTS.md".source = ../../AGENTS.md;
     ".dsh/cordis.patch.yml".source = patch;
-    ".dsh/.agent-presets/chat" = {
-      source = ./chat;
-      recursive = true;
-    };
-    ".dsh/.agent-presets/blender" = lib.mkIf pkgs.stdenv.isDarwin {
-      source = blenderPreset;
-      recursive = true;
-    };
+    ".dsh/node_modules/@local/dsh-defaults".source = defaultsBundle;
   };
   # User model/UI changes remain writable; Nix supplies the baseline above.
   home.activation.dshState = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
@@ -203,9 +240,7 @@ in
     run chmod 700 ${lib.escapeShellArg "${config.home.homeDirectory}/.local/state/dsh"}
     run touch ${lib.escapeShellArg "${config.home.homeDirectory}/.local/state/dsh/web.log"}
     run chmod 600 ${lib.escapeShellArg "${config.home.homeDirectory}/.local/state/dsh/web.log"}
-    if [ ! -e ${lib.escapeShellArg "${config.home.homeDirectory}/.dsh/settings.yaml"} ]; then
-      run install -m 600 ${initialSettings} ${lib.escapeShellArg "${config.home.homeDirectory}/.dsh/settings.yaml"}
-    fi
+    run ${lib.getExe pkgs.python3} ${./initialize-profiles.py} ${lib.escapeShellArg "${config.home.homeDirectory}/.dsh"}
   '';
   launchd.agents.dsh-web = lib.mkIf pkgs.stdenv.isDarwin {
     enable = true;

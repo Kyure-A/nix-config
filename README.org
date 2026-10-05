@@ -87,7 +87,9 @@ unreleased upstream Desktop application.
 On macOS, open =DSH Web.app= from Home Manager Apps or run =dsh-web=. The user
 LaunchAgent serves the authenticated interface on =127.0.0.1:3080=. The launcher
 opens its current authenticated URL without exposing its token in command-line
-arguments. For one-shot terminal tasks, use =dsh --profile headless "task"=.
+arguments. It registers the LaunchAgent if needed and validates the URL against
+the running server before opening it. For one-shot terminal tasks, use
+=dsh --profile headless "task"=.
 
 The default model is local Ollama Qwen3.8 27B. Huihui Qwen3.6 and Venice's Qwen
 3.6 Plus remain selectable. The =Blender= agent preset connects the existing
@@ -97,11 +99,16 @@ Venice lists the previous Qwen 35B model as retired in its September 9, 2026
 changelog. DSH uses the
 standard API route: an =e2ee-*= model ID alone does not enable client-side
 end-to-end encryption.
-Preset directories must be real directories with managed files: DSH does not
-discover directory symlinks.
-
-The declarative base is =~/.dsh/cordis.patch.yml=. The UI can save model choices
-and overrides in writable =~/.dsh/settings.yaml=. Shared personal Skills come
+DSH 0.2 declares the Chat and Blender presets as ordinary Cordis plugin rows.
+The Nix-owned =@local/dsh-defaults= bundle supplies model, provider, and preset
+defaults to the =web= and =headless= profiles. It lives under
+=~/.dsh/node_modules/=, outside the plugin manager's per-profile dependency
+directories. UI changes override those defaults in writable
+=~/.dsh/profiles/<profile>/cordis.patch.yml=. The home-level
+=~/.dsh/cordis.patch.yml= disables telemetry and supplementary title generation.
+On first boot, DSH imports the old =settings.yaml= into the active profile and
+renames it to =settings.yaml.imported=; the =web= profile should boot first.
+Shared personal Skills come
 from the private =self= repository via =~/.agents/skills=; external Skills and
 global =AGENTS.md= come from this repository. There is no second DSH copy of
 the shared Skills.
@@ -110,7 +117,14 @@ The launcher uses =VENICE_API_KEY= if supplied, otherwise reads the existing
 =~/.pi/agent/auth.json= at startup. It does not copy credentials into Nix or
 DSH settings. Keep that credential file and the old Pi session history until
 deliberately migrating their storage. Pi extension code is not loaded by DSH.
-DSH telemetry and supplementary LLM title generation are disabled.
+The Web launcher redacts OAuth access, refresh, and identity token fields from
+error output before it reaches the private startup log.
+
+For ChatGPT subscription login, install the compatible community provider into
+the Web profile, restart DSH, then open Plugins → OpenAI Codex →
+codex-provider → Connect Codex → Browser sign-in → Open sign-in page:
+=dsh plugin --profile web add @jcy2387/dsh-codex-provider@0.2.0-rc.2.1 --save-exact=.
+OAuth credentials stay in the native writable DSH credential store.
 
 Updating DSH requires updating =source.json=, the published production-only
 =package.json=, =package-lock.json=, and =npmDepsHash= together. The bounded

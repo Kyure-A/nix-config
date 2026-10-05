@@ -1,4 +1,4 @@
-/** Preserve the two Venice model wire contracts in DSH 0.1.5-rc.2. */
+/** Preserve the two Venice model wire contracts in the DSH pi-ai adapter. */
 export function venicePayload(profile, model, payload) {
   if (profile.provider !== 'venice') return payload;
   if (model.id === 'qwen-3-6-plus') {
