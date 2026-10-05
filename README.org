@@ -81,10 +81,13 @@ in inputs/bun2nix/
 
 External Skills are pinned in =inputs/skills/=. Jev-cu is distributed only to
 Codex, with its runtime examples pointing to the pinned, read-only upstream
-source. The =self/scripts/jev-cu-bws.mjs= adapter reads =TYPESAFE_API_KEY= from
-the =self-automation= BWS project in a child process; keep credentials out of
-Nix and skill files. Runtime traces use =$XDG_STATE_HOME/jev-cu/runs=, falling
-back to =~/.local/state/jev-cu/runs=.
+source. CUA observes and acts one step at a time; a separate host CLI,
+=self/scripts/jev-cu-bws.mjs --bws=, reads =TYPESAFE_API_KEY= from the
+=self-automation= BWS project in a child process. CUA must reobserve and check
+the original complete target label before acting. The bridge cannot be
+imported into CUA because its process APIs are unavailable there. Keep
+credentials out of Nix and skill files. Optional host-side traces use
+=$XDG_STATE_HOME/jev-cu/runs=, falling back to =~/.local/state/jev-cu/runs=.
 
 ** DSH
 
