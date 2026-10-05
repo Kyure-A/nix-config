@@ -77,6 +77,15 @@ in inputs/bun2nix/
  nix fmt ./
 #+end_src
 
+** Agent Skills
+
+External Skills are pinned in =inputs/skills/=. Jev-cu is distributed only to
+Codex, with its runtime examples pointing to the pinned, read-only upstream
+source. The =self/scripts/jev-cu-bws.mjs= adapter reads =TYPESAFE_API_KEY= from
+the =self-automation= BWS project in a child process; keep credentials out of
+Nix and skill files. Runtime traces use =$XDG_STATE_HOME/jev-cu/runs=, falling
+back to =~/.local/state/jev-cu/runs=.
+
 ** DSH
 
 DSH replaces Pi as the configured personal harness. Its CLI and production

@@ -11,6 +11,10 @@
       url = "github:vercel-labs/skills";
       flake = false;
     };
+    jev-cu = {
+      url = "github:Sac-Y/Jev-cu/52d32ac24e2cea29c63d9d7c4bd6d4c401111f56";
+      flake = false;
+    };
     natural-japanese = {
       url = "github:coji/natural-japanese";
       flake = false;
@@ -23,6 +27,7 @@
       agent-skills,
       anthropic,
       find-skills,
+      jev-cu,
       natural-japanese,
       ...
     }:
@@ -36,6 +41,7 @@
               agent-skills
               anthropic
               find-skills
+              jev-cu
               natural-japanese
               ;
           }

@@ -5,6 +5,7 @@
         "agent-skills": "agent-skills_2",
         "anthropic": "anthropic",
         "find-skills": "find-skills",
+        "jev-cu": "jev-cu",
         "natural-japanese": "natural-japanese"
       },
       "locked": {
@@ -488,6 +489,23 @@
         "owner": "nix-community",
         "ref": "master",
         "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "jev-cu": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790046494,
+        "narHash": "sha256-MwWozHZ2XyrM8H+OF/21Bkt6XSXQHNReJ1e7OdpxFLc=",
+        "owner": "Sac-Y",
+        "repo": "Jev-cu",
+        "rev": "52d32ac24e2cea29c63d9d7c4bd6d4c401111f56",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Sac-Y",
+        "repo": "Jev-cu",
+        "rev": "52d32ac24e2cea29c63d9d7c4bd6d4c401111f56",
         "type": "github"
       }
     },
