@@ -206,6 +206,9 @@ let
           exec dsh web "$@"
         '';
   };
+  tailnetProxy = pkgs.writeShellScriptBin "dsh-tailnet-proxy" ''
+    exec ${lib.getExe pkgs.nodejs_24} ${./tailnet-proxy.mjs} "$@"
+  '';
   webApp = pkgs.runCommand "dsh-web-app" { } ''
     app="$out/Applications/DSH Web.app/Contents"
     mkdir -p "$app/MacOS"
@@ -228,7 +231,10 @@ in
     dsh
     web
   ]
-  ++ lib.optionals pkgs.stdenv.isDarwin [ webApp ];
+  ++ lib.optionals pkgs.stdenv.isDarwin [
+    webApp
+    tailnetProxy
+  ];
   home.file = {
     ".dsh/AGENTS.md".source = ../../AGENTS.md;
     ".dsh/cordis.patch.yml".source = patch;
@@ -261,6 +267,29 @@ in
       ProcessType = "Interactive";
       StandardOutPath = "${config.home.homeDirectory}/.local/state/dsh/web.log";
       StandardErrorPath = "${config.home.homeDirectory}/.local/state/dsh/web.log";
+    };
+  };
+  # Tailscale Serve owns HTTPS and tailnet access. DSH keeps its existing
+  # loopback listener and credential store; this proxy supplies browser auth.
+  launchd.agents.dsh-tailnet-proxy = lib.mkIf pkgs.stdenv.isDarwin {
+    enable = true;
+    config = {
+      ProgramArguments = [
+        (lib.getExe tailnetProxy)
+      ];
+      EnvironmentVariables = {
+        DSH_TAILNET_HOST = "lelouch.tail1afda.ts.net";
+        DSH_PROXY_PORT = "3081";
+        DSH_WEB_LOG = "${config.home.homeDirectory}/.local/state/dsh/web.log";
+      };
+      WorkingDirectory = config.home.homeDirectory;
+      Umask = 63;
+      RunAtLoad = true;
+      KeepAlive = true;
+      ThrottleInterval = 10;
+      ProcessType = "Background";
+      StandardOutPath = "${config.home.homeDirectory}/.local/state/dsh/tailnet-proxy.log";
+      StandardErrorPath = "${config.home.homeDirectory}/.local/state/dsh/tailnet-proxy.log";
     };
   };
 }

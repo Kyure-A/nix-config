@@ -103,6 +103,22 @@ arguments. It registers the LaunchAgent if needed and validates the URL against
 the running server before opening it. For one-shot terminal tasks, use
 =dsh --profile headless "task"=.
 
+On the tailnet, open =https://lelouch.tail1afda.ts.net/= from any enrolled
+device. The =dsh-tailnet-proxy= user LaunchAgent listens on =127.0.0.1:3081=
+and authenticates to the existing DSH process internally, so remote browsers
+need no DSH token. It preserves WebSocket and HTTP streams, checks browser origins,
+and refreshes its private cookie after a DSH restart. Model credentials stay
+in their existing stores. Tailscale's existing all-to-all access rules apply.
+The persistent HTTPS forwarding is configured once with:
+
+#+begin_src shell
+ tailscale serve --bg --yes http://127.0.0.1:3081
+#+end_src
+
+This uses Tailscale Serve within the tailnet. The Mac must be awake and the
+user LaunchAgents running. To remove the remote entry point, run
+=tailscale serve --https=443 off=; the local DSH interface remains available.
+
 The default model is local Ollama Qwen3.8 27B. Huihui Qwen3.6 and Venice's Qwen
 3.6 Plus remain selectable. The =Blender= agent preset connects the existing
 Blender MCP only for clothing/scene work; normal sessions avoid those extra
