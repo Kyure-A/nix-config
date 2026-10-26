@@ -79,7 +79,10 @@
     nerd-fonts.fira-code
   ];
 
-  services.tailscale.enable = true;
+  services.tailscale = {
+    enable = true;
+    package = import ./tailscale-package.nix { system = pkgs.stdenv.hostPlatform.system; };
+  };
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
