@@ -87,7 +87,8 @@ in
       ${shared.bundle} \
       ${rawDsh}/lib/node_modules/@deepseek-ai/dsh/node_modules/@jcy2387/dsh-codex-provider \
       ${shared.patch} \
-      ${rawDsh}/lib/node_modules/@deepseek-ai/dsh/node_modules/dsh-purge-community
+      ${rawDsh}/lib/node_modules/@deepseek-ai/dsh/node_modules/dsh-purge-community \
+      ${rawDsh}/lib/node_modules/@deepseek-ai/dsh/node_modules/@local/dsh-codex-personal
     run ${lib.getExe pkgs.python3} ${./initialize-profiles.py} ${lib.escapeShellArg "${config.home.homeDirectory}/.dsh"} ${../../AGENTS.md}
   '';
   launchd.agents.dsh-web = lib.mkIf pkgs.stdenv.isDarwin {

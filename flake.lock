@@ -174,8 +174,8 @@
     "dsh-shared": {
       "flake": false,
       "locked": {
-        "lastModified": 1793536254,
-        "narHash": "sha256-4ngc2ZqIWRlCuTPXUsexU6zTVxlh/XZOBuAQO8D6lf8=",
+        "lastModified": 1793539331,
+        "narHash": "sha256-gnRKBA3TZRDtdsGzYKYKajkgo6N0z3uHE9sudi7Wrlw=",
         "path": "/Users/kyre/ghq/github.com/Kyure-A/self/ops/nixos/dsh-package",
         "type": "path"
       },

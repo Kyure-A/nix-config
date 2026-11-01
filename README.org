@@ -170,10 +170,12 @@ The launcher also reads =~/.config/dsh/strata-rvn.key= when no
 =STRATA_RVN_API_KEY= is supplied. It must be a private regular file. Credentials
 remain local and are never stored in the shared source or flake input.
 
-For ChatGPT subscription login, the compatible community provider is already
-installed. Open Plugins → OpenAI Codex → codex-provider → Connect Codex →
-Browser sign-in → Open sign-in page. OAuth credentials stay in the native
-writable DSH credential store.
+For ChatGPT subscription login, two account-specific providers are installed.
+Open Plugins → Codex C-Style or Codex Personal → Configure → Connect →
+Browser sign-in → Open sign-in page. Authenticate each account separately on
+each host; the existing C-Style route remains unchanged. Choose the matching
+group in the model picker. OAuth credentials stay in the native writable DSH
+credential store and never synchronize or import the Codex app's login.
 
 Update the shared package in =self/ops/nixos/dsh-package/=, refresh
 =dsh-shared=, and build both platforms before deployment. The npm dependency
