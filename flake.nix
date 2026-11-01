@@ -10,9 +10,9 @@
 
   inputs = {
     agent-skills.url = "path:./inputs/skills";
-    dsh-shared = {
-      url = "path:/Users/kyre/ghq/github.com/Kyure-A/self/ops/nixos/dsh-package";
-      flake = false;
+    dsh-config = {
+      url = "git+ssh://git@github.com/Kyure-A/dsh-config?ref=master";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     blueprint = {
       url = "github:numtide/blueprint";

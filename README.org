@@ -91,94 +91,35 @@ credentials out of Nix and skill files. Optional host-side traces use
 
 ** DSH
 
-DSH replaces Pi as the configured personal harness. Its CLI, production
-dependencies, Codex provider, Purge plugin, and shared defaults come from the
-private =self= repository's =ops/nixos/dsh-package/= through the scoped
-=dsh-shared= path input. The same source is deployed on Avalon. The Home Manager
-module is =modules/home/programs/dsh/=. The backend serves the official Web
-interface inside a native macOS application window.
+DSH is managed by the independent [[https://github.com/Kyure-A/dsh-config][dsh-config]] flake. That repository owns
+the pinned backend and plugins, common defaults, native Mac application,
+launchers, settings synchronization, and Home Manager/NixOS modules.
 
-The input points to kyre's local checkout and copies only that operational
-source directory into the Nix store. After changing shared sources, refresh
-only this input with =nix flake update dsh-shared= before rebuilding. For a
-checkout in another location, use:
+This repository only consumes its Home Manager module in
+=modules/home/programs/dsh/default.nix=. The host declares DSH enabled, the
+local node name, the SSH synchronization peer, and the initial instructions
+file. The Tailscale hostname is derived from =dsh-config.lib.network.fqdn=;
+its domain is defined once in =dsh-config/config/network.nix=.
 
-#+begin_src shell
- nix flake update dsh-shared --override-input dsh-shared path:/absolute/path/to/self/ops/nixos/dsh-package
-#+end_src
-
-On macOS, open =DSH.app= from Home Manager Apps. It is an AppKit application
-with its own Dock icon, menu bar, resizable window, native file dialogs, and
-persistent WebKit cookies. It connects to the existing DSH LaunchAgent on
-=127.0.0.1:3080= and starts that service when needed. The authenticated bootstrap
-URL stays inside the process and is never passed through command-line
-arguments or logs by the application. Quitting the window application leaves
-the shared background harness and settings synchronization running.
-The explicit =dsh-web= command remains available for browser access. For
-one-shot terminal tasks, use =dsh --profile headless "task"=.
-
-On the tailnet, open =https://lelouch.tail1afda.ts.net/= from any enrolled
-device. The =dsh-tailnet-proxy= user LaunchAgent listens on =127.0.0.1:3081=
-and authenticates to the existing DSH process internally, so remote browsers
-need no DSH token. It preserves WebSocket and HTTP streams, checks browser origins,
-and refreshes its private cookie after a DSH restart. Model credentials stay
-in their existing stores. Tailscale's existing all-to-all access rules apply.
-The persistent HTTPS forwarding is configured once with:
+Update the input after publishing a dsh-config change:
 
 #+begin_src shell
- tailscale serve --bg --yes http://127.0.0.1:3081
+ nix flake update dsh-config
 #+end_src
 
-This uses Tailscale Serve within the tailnet. The Mac must be awake and the
-user LaunchAgents running. To remove the remote entry point, run
-=tailscale serve --https=443 off=; the local DSH interface remains available.
+For a local source build without changing the committed input pin:
 
-Avalon and the Mac share the Venice and Strata provider definitions, model
-baseline, Chat preset, Codex provider, and Purge plugin. The local DSH
-configuration now matches Avalon's shared defaults exactly.
-The previous Mac-only Ollama entries and Blender preset are no longer loaded
-by DSH; their underlying installed software is unchanged. Shared personal
-Skills come from the private =self= repository via =~/.agents/skills=; external Skills and global
-=AGENTS.md= originate in this repository. On first activation, the global
-=AGENTS.md= is seeded into a writable =~/.dsh/AGENTS.md= regular file; Purge
-can then activate and synchronize rules in that runtime copy. Later Home
-Manager switches preserve the existing regular file and refuse unowned
-symlinks instead of replacing them.
+#+begin_src shell
+ nix build .#darwinConfigurations.darwin.config.home-manager.users.kyre.home.activationPackage --override-input dsh-config path:/absolute/path/to/dsh-config --no-write-lock-file
+#+end_src
 
-The Nix-owned =@local/dsh-defaults= bundle supplies shared defaults to the
-=web= and =headless= profiles. UI changes remain writable in
-=~/.dsh/profiles/<profile>/cordis.patch.yml=. The shared initializer pins the
-Codex provider and Purge bundles and disables Purge's independent self-updater;
-package upgrades go through the shared Nix source.
+Open =DSH.app= from Home Manager Apps, use =dsh-web= for browser access, or
+=dsh --profile headless "task"= for a terminal task. Writable configuration,
+conversations and native OAuth credentials stay in =~/.dsh=. The existing
+Venice credential in =~/.pi/agent/auth.json= and Strata credential in
+=~/.config/dsh/strata-rvn.key= retain their current storage paths.
 
-The =dsh-settings-sync= LaunchAgent watches the shared Web UI settings and
-exchanges changes with Avalon over SSH every three seconds. Its configuration
-is =~/.config/dsh/settings-sync.json=; local sync state and private logs live
-under =~/.local/state/dsh/=. Bootstrap the initial state before relying on the
-watcher; it reports =SYNC_BOOTSTRAP_REQUIRED= until then. This synchronization
-covers the approved settings fields, not credentials, conversation history,
-or machine-specific paths.
-
-The launcher uses =VENICE_API_KEY= if supplied, otherwise reads the existing
-=~/.pi/agent/auth.json= at startup. It does not copy credentials into Nix or
-DSH settings. Keep that credential file and the old Pi session history until
-deliberately migrating their storage. Pi extension code is not loaded by DSH.
-The Web launcher redacts OAuth access, refresh, and identity token fields from
-error output before it reaches the private startup log.
-
-The launcher also reads =~/.config/dsh/strata-rvn.key= when no
-=STRATA_RVN_API_KEY= is supplied. It must be a private regular file. Credentials
-remain local and are never stored in the shared source or flake input.
-
-For ChatGPT subscription login, two account-specific providers are installed.
-Open Plugins → Codex C-Style or Codex Personal → Configure → Connect →
-Browser sign-in → Open sign-in page. Authenticate each account separately on
-each host; the existing C-Style route remains unchanged. Choose the matching
-group in the model picker. OAuth credentials stay in the native writable DSH
-credential store and never synchronize or import the Codex app's login.
-
-Update the shared package in =self/ops/nixos/dsh-package/=, refresh
-=dsh-shared=, and build both platforms before deployment. The npm dependency
-cache hash differs between the pinned Darwin and Avalon Nixpkgs fetchers and
-is selected in the shared package definition. Do not create a second copy of
-the package sources in this repository.
+Mac and Avalon exchange supported UI settings over SSH; credentials and
+conversation history do not synchronize. The initial =AGENTS.md= is copied
+only when absent and stays writable thereafter. See dsh-config's README for
+account setup, service operation and rollback instructions.

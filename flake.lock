@@ -171,17 +171,25 @@
         "type": "github"
       }
     },
-    "dsh-shared": {
-      "flake": false,
+    "dsh-config": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "lastModified": 1793539331,
-        "narHash": "sha256-gnRKBA3TZRDtdsGzYKYKajkgo6N0z3uHE9sudi7Wrlw=",
-        "path": "/Users/kyre/ghq/github.com/Kyure-A/self/ops/nixos/dsh-package",
-        "type": "path"
+        "lastModified": 1793541163,
+        "narHash": "sha256-Thk/qZmsLSeqI0Rzs5bESujNVrRm15oA4reqLFo5lXw=",
+        "ref": "master",
+        "rev": "1229ddabd580bd39fee2ba91584860a0acf5d4e2",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@github.com/Kyure-A/dsh-config"
       },
       "original": {
-        "path": "/Users/kyre/ghq/github.com/Kyure-A/self/ops/nixos/dsh-package",
-        "type": "path"
+        "ref": "master",
+        "type": "git",
+        "url": "ssh://git@github.com/Kyure-A/dsh-config"
       }
     },
     "elisp-helpers": {
@@ -817,7 +825,7 @@
         "brew-api": "brew-api",
         "brew-nix": "brew-nix",
         "bun2nix": "bun2nix",
-        "dsh-shared": "dsh-shared",
+        "dsh-config": "dsh-config",
         "emacs": "emacs",
         "emacs-overlay": "emacs-overlay",
         "fenix": "fenix",
