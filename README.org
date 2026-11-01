@@ -91,17 +91,31 @@ credentials out of Nix and skill files. Optional host-side traces use
 
 ** DSH
 
-DSH replaces Pi as the configured personal harness. Its CLI and production
-dependencies are pinned under =inputs/dsh/=; the Home Manager module is
-=modules/home/programs/dsh/=. This installs the official Web interface, not the
-unreleased upstream Desktop application.
+DSH replaces Pi as the configured personal harness. Its CLI, production
+dependencies, Codex provider, Purge plugin, and shared defaults come from the
+private =self= repository's =ops/nixos/dsh-package/= through the scoped
+=dsh-shared= path input. The same source is deployed on Avalon. The Home Manager
+module is =modules/home/programs/dsh/=. The backend serves the official Web
+interface inside a native macOS application window.
 
-On macOS, open =DSH Web.app= from Home Manager Apps or run =dsh-web=. The user
-LaunchAgent serves the authenticated interface on =127.0.0.1:3080=. The launcher
-opens its current authenticated URL without exposing its token in command-line
-arguments. It registers the LaunchAgent if needed and validates the URL against
-the running server before opening it. For one-shot terminal tasks, use
-=dsh --profile headless "task"=.
+The input points to kyre's local checkout and copies only that operational
+source directory into the Nix store. After changing shared sources, refresh
+only this input with =nix flake update dsh-shared= before rebuilding. For a
+checkout in another location, use:
+
+#+begin_src shell
+ nix flake update dsh-shared --override-input dsh-shared path:/absolute/path/to/self/ops/nixos/dsh-package
+#+end_src
+
+On macOS, open =DSH.app= from Home Manager Apps. It is an AppKit application
+with its own Dock icon, menu bar, resizable window, native file dialogs, and
+persistent WebKit cookies. It connects to the existing DSH LaunchAgent on
+=127.0.0.1:3080= and starts that service when needed. The authenticated bootstrap
+URL stays inside the process and is never passed through command-line
+arguments or logs by the application. Quitting the window application leaves
+the shared background harness and settings synchronization running.
+The explicit =dsh-web= command remains available for browser access. For
+one-shot terminal tasks, use =dsh --profile headless "task"=.
 
 On the tailnet, open =https://lelouch.tail1afda.ts.net/= from any enrolled
 device. The =dsh-tailnet-proxy= user LaunchAgent listens on =127.0.0.1:3081=
@@ -119,27 +133,31 @@ This uses Tailscale Serve within the tailnet. The Mac must be awake and the
 user LaunchAgents running. To remove the remote entry point, run
 =tailscale serve --https=443 off=; the local DSH interface remains available.
 
-The default model is local Ollama Qwen3.8 27B. Huihui Qwen3.6 and Venice's Qwen
-3.6 Plus remain selectable. The =Blender= agent preset connects the existing
-Blender MCP only for clothing/scene work; normal sessions avoid those extra
-tool definitions. Use a new =Chat (no tools)= session for Venice's Gemma 4 26B TEE model.
-Venice lists the previous Qwen 35B model as retired in its September 9, 2026
-changelog. DSH uses the
-standard API route: an =e2ee-*= model ID alone does not enable client-side
-end-to-end encryption.
-DSH 0.2 declares the Chat and Blender presets as ordinary Cordis plugin rows.
-The Nix-owned =@local/dsh-defaults= bundle supplies model, provider, and preset
-defaults to the =web= and =headless= profiles. It lives under
-=~/.dsh/node_modules/=, outside the plugin manager's per-profile dependency
-directories. UI changes override those defaults in writable
-=~/.dsh/profiles/<profile>/cordis.patch.yml=. The home-level
-=~/.dsh/cordis.patch.yml= disables telemetry and supplementary title generation.
-On first boot, DSH imports the old =settings.yaml= into the active profile and
-renames it to =settings.yaml.imported=; the =web= profile should boot first.
-Shared personal Skills come
-from the private =self= repository via =~/.agents/skills=; external Skills and
-global =AGENTS.md= come from this repository. There is no second DSH copy of
-the shared Skills.
+Avalon and the Mac share the Venice and Strata provider definitions, model
+baseline, Chat preset, Codex provider, and Purge plugin. The local DSH
+configuration now matches Avalon's shared defaults exactly.
+The previous Mac-only Ollama entries and Blender preset are no longer loaded
+by DSH; their underlying installed software is unchanged. Shared personal
+Skills come from the private =self= repository via =~/.agents/skills=; external Skills and global
+=AGENTS.md= originate in this repository. On first activation, the global
+=AGENTS.md= is seeded into a writable =~/.dsh/AGENTS.md= regular file; Purge
+can then activate and synchronize rules in that runtime copy. Later Home
+Manager switches preserve the existing regular file and refuse unowned
+symlinks instead of replacing them.
+
+The Nix-owned =@local/dsh-defaults= bundle supplies shared defaults to the
+=web= and =headless= profiles. UI changes remain writable in
+=~/.dsh/profiles/<profile>/cordis.patch.yml=. The shared initializer pins the
+Codex provider and Purge bundles and disables Purge's independent self-updater;
+package upgrades go through the shared Nix source.
+
+The =dsh-settings-sync= LaunchAgent watches the shared Web UI settings and
+exchanges changes with Avalon over SSH every three seconds. Its configuration
+is =~/.config/dsh/settings-sync.json=; local sync state and private logs live
+under =~/.local/state/dsh/=. Bootstrap the initial state before relying on the
+watcher; it reports =SYNC_BOOTSTRAP_REQUIRED= until then. This synchronization
+covers the approved settings fields, not credentials, conversation history,
+or machine-specific paths.
 
 The launcher uses =VENICE_API_KEY= if supplied, otherwise reads the existing
 =~/.pi/agent/auth.json= at startup. It does not copy credentials into Nix or
@@ -148,15 +166,17 @@ deliberately migrating their storage. Pi extension code is not loaded by DSH.
 The Web launcher redacts OAuth access, refresh, and identity token fields from
 error output before it reaches the private startup log.
 
-For ChatGPT subscription login, install the compatible community provider into
-the Web profile, restart DSH, then open Plugins → OpenAI Codex →
-codex-provider → Connect Codex → Browser sign-in → Open sign-in page:
-=dsh plugin --profile web add @jcy2387/dsh-codex-provider@0.2.0-rc.2.1 --save-exact=.
-OAuth credentials stay in the native writable DSH credential store.
+The launcher also reads =~/.config/dsh/strata-rvn.key= when no
+=STRATA_RVN_API_KEY= is supplied. It must be a private regular file. Credentials
+remain local and are never stored in the shared source or flake input.
 
-Updating DSH requires updating =source.json=, the published production-only
-=package.json=, =package-lock.json=, and =npmDepsHash= together. The bounded
-Venice payload patch preserves the two existing model contracts; its insertion
-assertion fails on upstream drift. Validate it with
-=node inputs/dsh/venice-compat.test.mjs=, build the package/system, and check a
-real model request before switching.
+For ChatGPT subscription login, the compatible community provider is already
+installed. Open Plugins → OpenAI Codex → codex-provider → Connect Codex →
+Browser sign-in → Open sign-in page. OAuth credentials stay in the native
+writable DSH credential store.
+
+Update the shared package in =self/ops/nixos/dsh-package/=, refresh
+=dsh-shared=, and build both platforms before deployment. The npm dependency
+cache hash differs between the pinned Darwin and Avalon Nixpkgs fetchers and
+is selected in the shared package definition. Do not create a second copy of
+the package sources in this repository.

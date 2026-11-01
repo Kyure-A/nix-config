@@ -1,4 +1,4 @@
-"""Attach inherited Nix defaults without replacing writable profile state."""
+"""Seed writable rules and remove obsolete Mac-only profile bundles."""
 
 import json
 import os
@@ -7,42 +7,35 @@ import sys
 import tempfile
 
 
-DEFAULTS_BUNDLE = "@local/dsh-defaults"
-TEMPLATES = {
-    "web": ["@deepseek-ai/dsh-base", "@deepseek-ai/dsh-web-app"],
-    "headless": ["@deepseek-ai/dsh-base", "@deepseek-ai/dsh-headless"],
-}
+RETIRED_BUNDLE = "@local/dsh-host"
 
 
-def initialize_profiles(home):
-    for name, template in TEMPLATES.items():
+def initialize_profiles(home, agents_source):
+    agents = home / "AGENTS.md"
+    if agents.is_symlink() or (agents.exists() and not agents.is_file()):
+        raise ValueError("DSH AGENTS.md must be a writable regular file")
+    if not agents.exists():
+        descriptor = os.open(agents, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+        with os.fdopen(descriptor, "w") as target:
+            target.write(agents_source.read_text())
+    for name in ("web", "headless"):
         directory = home / "profiles" / name
-        directory.mkdir(mode=0o700, parents=True, exist_ok=True)
         path = directory / "package.json"
-        if path.exists():
-            manifest = json.loads(path.read_text())
-        else:
-            manifest = {"name": f"dsh-profile-{name}", "private": True, "dependencies": {}}
+        if not path.exists():
+            continue
+        manifest = json.loads(path.read_text())
         profile = manifest.setdefault("dsh", {}).setdefault("profile", {})
-        bundles = profile.setdefault("bundles", list(template))
+        bundles = profile.get("bundles", [])
         if not isinstance(bundles, list) or not all(isinstance(item, str) for item in bundles):
             raise ValueError(f"Invalid DSH bundle list in {path}")
-        if DEFAULTS_BUNDLE not in bundles:
-            bundles.append(DEFAULTS_BUNDLE)
+        if RETIRED_BUNDLE in bundles:
+            profile["bundles"] = [bundle for bundle in bundles if bundle != RETIRED_BUNDLE]
             with tempfile.NamedTemporaryFile(mode="w", dir=directory, delete=False) as target:
                 json.dump(manifest, target, indent=2)
                 target.write("\n")
                 temporary = target.name
             os.replace(temporary, path)
-        patch = directory / "cordis.patch.yml"
-        if not patch.exists():
-            patch.write_text("# Writable profile overrides, applied after bundle defaults.\n[]\n")
-            patch.chmod(0o600)
-        workspace = directory / "pnpm-workspace.yaml"
-        if not workspace.exists():
-            workspace.write_text("packages:\n  - .\n\nnodeLinker: hoisted\nautoInstallPeers: false\n")
-            workspace.chmod(0o600)
 
 
 if __name__ == "__main__":
-    initialize_profiles(Path(sys.argv[1]))
+    initialize_profiles(Path(sys.argv[1]), Path(sys.argv[2]))

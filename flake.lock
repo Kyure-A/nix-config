@@ -171,6 +171,19 @@
         "type": "github"
       }
     },
+    "dsh-shared": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793536254,
+        "narHash": "sha256-4ngc2ZqIWRlCuTPXUsexU6zTVxlh/XZOBuAQO8D6lf8=",
+        "path": "/Users/kyre/ghq/github.com/Kyure-A/self/ops/nixos/dsh-package",
+        "type": "path"
+      },
+      "original": {
+        "path": "/Users/kyre/ghq/github.com/Kyure-A/self/ops/nixos/dsh-package",
+        "type": "path"
+      }
+    },
     "elisp-helpers": {
       "inputs": {
         "fromElisp": "fromElisp"
@@ -804,6 +817,7 @@
         "brew-api": "brew-api",
         "brew-nix": "brew-nix",
         "bun2nix": "bun2nix",
+        "dsh-shared": "dsh-shared",
         "emacs": "emacs",
         "emacs-overlay": "emacs-overlay",
         "fenix": "fenix",
